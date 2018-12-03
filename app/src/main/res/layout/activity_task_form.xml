@@ -1,0 +1,344 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/atgback1"
+    tools:context="edu.gmu.ttaconline.atcguide.TaskForm">
+
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_form" />
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/action_bar"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/titleback"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/savedformback"
+            android:text="@string/part3"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/nextbuttonlayout"
+        android:layout_below="@+id/header"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="30"
+            android:background="@drawable/textviewback"
+            android:baselineAligned="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="50"
+                    android:gravity="start"
+                    android:text="@string/areataskheader"
+                    android:textColor="@color/text_hint_title" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="50"
+                    android:gravity="end"
+                    android:text="@string/ready"
+                    android:textColor="@color/text_hint_title" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/instructionalAreasList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></ListView>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="70"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="100">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:gravity="center_horizontal"
+                    android:text="@string/completetaskform"
+                    android:textColor="@color/text_hint_title" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:background="@drawable/taskback"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/instructionalarea"
+                        android:textColor="@color/text_hint_title"
+                        android:textSize="18sp" />
+
+                    <Space
+                        android:layout_width="5sp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tasktitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/text_black"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="15"
+                    android:background="@drawable/taskback"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Task that is difficult for the student"
+                        android:textColor="@color/text_hint_title" />
+
+                    <EditText
+                        android:id="@+id/taskname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/tasktextviewback"
+                        android:hint="Enter task name here"
+                        android:padding="@dimen/x5"
+                        android:layout_marginRight="@dimen/y5"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="64"
+                    android:background="@drawable/taskback"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="100">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="95"
+                            android:text="@string/taskinfo"
+                            android:textColor="@color/text_hint_title" />
+
+                    </LinearLayout>
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageButton
+                                android:id="@+id/addstrategy"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:background="@null"
+                                android:contentDescription="Add new strategy"
+                                android:padding="@dimen/x3"
+                                android:src="@drawable/ic_action_plusbutton" />
+
+                            <LinearLayout
+                                android:id="@+id/strategylayout"
+                                android:layout_width="0dp"
+                                android:layout_weight="9"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/y5"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <EditText
+                                        android:id="@+id/strategy0"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="8"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/tasktextviewback"
+                                        android:hint=""
+                                        android:singleLine="true"
+                                        android:textColor="@android:color/black" />
+
+                                    <ImageButton
+                                        android:id="@+id/deletestrategy0"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="2"
+                                        android:layout_height="wrap_content"
+                                        android:background="@null"
+                                        android:contentDescription="Delete Strategy"
+                                        android:padding="@dimen/x3"
+                                        android:src="@drawable/ic_delete_forever" />
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rowback"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Are the current soultion(s) working?"
+                        android:textColor="@color/text_hint_title"
+                        android:textSize="18sp" />
+
+                    <RadioGroup
+                        android:id="@+id/solutionradiogroup"
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/solutionyes"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="wrap_content"
+                            android:text="@string/yes" />
+
+                        <RadioButton
+                            android:id="@+id/solutionno"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/no" />
+                    </RadioGroup>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <Button
+
+                            android:id="@+id/addnewtask"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/taskbuttons"
+                            android:padding="3dp"
+                            android:text="Add new task" />
+
+
+                        <Button
+                            android:id="@+id/deletetask"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/taskbuttons"
+                            android:padding="3dp"
+                            android:text="Delete task" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nextbuttonlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/titleback"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/nextbutton"
+            android:layout_width="@dimen/y120"
+            android:layout_height="@dimen/x50"
+            android:layout_marginBottom="@dimen/x5"
+            android:layout_marginTop="@dimen/x5"
+            android:background="@drawable/mybutton"
+            android:padding="4dp"
+            android:text="@string/next" />
+
+        <!--<Button
+            android:id="@+id/logbutton"
+            android:layout_width="@dimen/y120"
+            android:layout_height="@dimen/x50"
+            android:layout_marginTop="@dimen/x5"
+            android:layout_marginBottom="@dimen/x5"
+            android:layout_marginLeft="@dimen/y20"
+            android:padding="4dp"
+            android:background="@drawable/mybutton"
+            android:text="Log" />-->
+    </LinearLayout>
+
+</RelativeLayout>

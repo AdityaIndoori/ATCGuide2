@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\build\\intermediates\\res\\merged\\debug\\menu\\iepgoals.xml",
+        "source": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\src\\main\\res\\menu\\iepgoals.xml"
+    },
+    {
+        "merged": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\build\\intermediates\\res\\merged\\debug\\menu\\waiting.xml",
+        "source": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\src\\main\\res\\menu\\waiting.xml"
+    },
+    {
+        "merged": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\build\\intermediates\\res\\merged\\debug\\menu\\instructional_areas.xml",
+        "source": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\src\\main\\res\\menu\\instructional_areas.xml"
+    },
+    {
+        "merged": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\build\\intermediates\\res\\merged\\debug\\menu\\revisit_second_trial.xml",
+        "source": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\src\\main\\res\\menu\\revisit_second_trial.xml"
+    },
+    {
+        "merged": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\build\\intermediates\\res\\merged\\debug\\menu\\first_trial.xml",
+        "source": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\src\\main\\res\\menu\\first_trial.xml"
+    },
+    {
+        "merged": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\build\\intermediates\\res\\merged\\debug\\menu\\task_form.xml",
+        "source": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\src\\main\\res\\menu\\task_form.xml"
+    },
+    {
+        "merged": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\build\\intermediates\\res\\merged\\debug\\menu\\second_trial.xml",
+        "source": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\src\\main\\res\\menu\\second_trial.xml"
+    },
+    {
+        "merged": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\build\\intermediates\\res\\merged\\debug\\menu\\iepreading.xml",
+        "source": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\src\\main\\res\\menu\\iepreading.xml"
+    },
+    {
+        "merged": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\build\\intermediates\\res\\merged\\debug\\menu\\revisit_first_trial.xml",
+        "source": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\src\\main\\res\\menu\\revisit_first_trial.xml"
+    },
+    {
+        "merged": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\build\\intermediates\\res\\merged\\debug\\menu\\at__list.xml",
+        "source": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\src\\main\\res\\menu\\at__list.xml"
+    },
+    {
+        "merged": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\build\\intermediates\\res\\merged\\debug\\menu\\input_form.xml",
+        "source": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\src\\main\\res\\menu\\input_form.xml"
+    },
+    {
+        "merged": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\build\\intermediates\\res\\merged\\debug\\menu\\form__summary.xml",
+        "source": "C:\\Users\\aindoori\\Documents\\Current Projects\\ATCGuide\\app\\src\\main\\res\\menu\\form__summary.xml"
+    }
+]

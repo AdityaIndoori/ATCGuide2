@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ATCGuide</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_main">Assistive Technology Consideration Guide</string>
+    <string name="savedforms">\u25CF Saved Forms \u25CF</string>
+    <string name="studentInformation">\u25CF Student Information \u25CF</string>
+    <string name="part2">\u25CF Part 2 \u25CF</string>
+    <string name="part3">\u25CF Part 3 \u25CF</string>
+    <string name="part4">\u25CF Part 4 \u25CF</string>
+    <string name="trial">Trial</string>
+    <string name="trial1">1st Trial</string>
+    <string name="trial2">2nd Trial</string>
+    <string name="secondtrial">Second Trial</string>
+    <string name="open">Open</string>
+    <string name="preview">Preview</string>
+    <string name="sampledata">\u25CF Sample Data \u25CF</string>
+    <string name="title_activity_input_form">InputForm</string>
+    <string name="student">Student ID</string>
+    <string name="grade">Grade</string>
+    <string name="school">School</string>
+    <string name="participants">Participants</string>
+    <string name="date">Date</string>
+    <string name="next">Next</string>
+    <string name="ok">OK</string>
+    <string name="preschool">Pre-school</string>
+    <string name="kindergarten">Kindergarten</string>
+    <string name="grade1">1st Grade</string>
+    <string name="grade2">2nd Grade</string>
+    <string name="grade3">3rd Grade</string>
+    <string name="grade4">4th Grade</string>
+    <string name="grade5">5th Grade</string>
+    <string name="grade6">6th Grade</string>
+    <string name="grade7">7th Grade</string>
+    <string name="grade8">8th Grade</string>
+    <string name="grade9">9th Grade</string>
+    <string name="grade10">10th Grade</string>
+    <string name="grade11">11th Grade</string>
+    <string name="grade12">12th Grade</string>
+    <string name="summary_end">In addition, you will discuss the outcome of the trial(s) during future meeting.</string>
+
+    <string-array name="gradearray">
+        <item>@string/preschool</item>
+        <item>@string/kindergarten</item>
+        <item>@string/grade1</item>
+        <item>@string/grade2</item>
+        <item>@string/grade3</item>
+        <item>@string/grade4</item>
+        <item>@string/grade5</item>
+        <item>@string/grade6</item>
+        <item>@string/grade7</item>
+        <item>@string/grade8</item>
+        <item>@string/grade9</item>
+        <item>@string/grade10</item>
+        <item>@string/grade11</item>
+        <item>@string/grade12</item>
+    </string-array>
+
+    <string name="firstTrialSummary1">This form for the trial has been saved.</string>
+    <string name="firstTrialSummary2">You will now need to implement new AT solutions.</string>
+    <string name="firstTrialSummary3">After completing the trial(s), please reopen this file and select "Trial" on the home page to finish the remaining part of the form.</string>
+    <string name="firstTrialSummary4">In addition, you will discuss the outcome of the trial(s) during future meeting.</string>
+    <string name="secondTrialSummary1">This form for the second trial has been saved.</string>
+    <string name="secondTrialSummary2">You will now need to implement new AT solutions.</string>
+    <string name="secondTrialSummary3">After completing the trial(s), please reopen this file and select "2nd Trial" on the home page to finish the remaining part of the form.</string>
+    <string name="secondTrialSummary4">In addition, you will discuss the outcome of the trial(s) during future meeting.</string>
+    <string name="title_activity_iepgoals">IEPGoals</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="title_activity_instructional_areas">InstructionalAreas</string>
+    <string name="subtitle_instructional">Please check relevant instructional area(s).</string>
+    <string name="listeninginstr">Listening</string>
+    <string name="readinginstr">Reading</string>
+    <string name="writinginstr">Writing</string>
+    <string name="oralinstr">Oral Communication</string>
+    <string name="activitiesinstr">Activities of Daily Living</string>
+    <string name="positioninginstr">Positioning, Seating, and Mobility</string>
+    <string name="otherinstr">Other</string>
+    <string name="mathinstr">Math</string>
+    <string name="spellinginstr">Spelling</string>
+    <string name="computerinstr">Computer Access</string>
+    <string name="studyinstr">Study/Organizational Skills</string>
+    <string name="environmentinstr">Environment Controls</string>
+    <string name="recreationinstr">Recreation, Leisure and Adaptive Play</string>
+    <string name="part1">\u25CF  Part 1 \u25CF </string>
+    <string name="completetaskform">Complete the following form(s) for each area identified.</string>
+    <string name="instructionalarea">Instructional Area: </string>
+
+    <string-array name="list1">
+        <item name="listening">@string/listeninginstr</item>
+        <item name="reading">@string/readinginstr</item>
+        <item name="writing">@string/writinginstr</item>
+        <item name="oral">@string/oralinstr</item>
+        <item name="activities">@string/activitiesinstr</item>
+        <item name="positioning">@string/positioninginstr</item>
+    </string-array>
+    <string-array name="list2">
+        <item name="math">@string/mathinstr</item>
+        <item name="spelling">@string/spellinginstr</item>
+        <item name="computer">@string/computerinstr</item>
+        <item name="study">@string/studyinstr</item>
+        <item name="environment">@string/environmentinstr</item>
+        <item name="recreation">@string/recreationinstr</item>
+    </string-array>
+
+    <string name="title_activity_iepreading">IEPReading</string>
+    <!--<string name="IEPReadingquestion">Does the student have IEP goals or accommodations in the area of reading?</string>
+    <string name="printdisability">Does a student with a disability have difficulty reading printed based materials?</string>
+    <string name="printalternative">Has the IEP team tested the student to determine if they might benefit from print material in alternative formats (i.e., Large Print, Braille, Electronic Text, Audio)?</string>-->
+    <string name="IEPReadingquestion">Accessible Instructional Materials</string>
+    <string name="printdisability">Does the student benefit from accessible versions of printed educational material?</string>
+    <string name="printalternative">Does the student benefit from alternate reading supports(e.g., read aloud, text-to-speech, large print, braille, accessible text)?</string>
+
+    <string name="title_activity_task_form">TaskForm</string>
+    <string name="areataskheader">Area/Task</string>
+    <string name="areataskatheader">Area/Task/AT</string>
+    <string name="ready">Ready</string>
+    <string name="taskinfo">Briefly list currently being used strategies, accommodations, assistive technology on general education, special education, community, work and home settings.</string>
+    <string name="when">Trial completed by when</string>
+    <string name="taskname">Task Name</string>
+    <string name="assistivetech">Assistive Technology</string>
+    <string name="AIMCall">Since you selected \"Yes\" to these questions, do you want to determine the student\'s eligibility for AIM-VA services.</string>
+    <string name="AIMTitle">AIM-VA Eligibility</string>
+    <string name="title_activity_waiting">Waiting</string>
+    <string name="title_activity_first_trial">FirstTrial</string>
+    <string name="trial1nav">There have been changes in the student\'s functional or academic performance, or current strategies are NOT adequate and could require new assistive technology or a change in current AT (devices or services) provided.</string>
+    <string name="trial2nav">There have been changes in the student\'s functional or academic performance, or current strategies are NOT adequate and could require new assistive technology or a change in current AT (devices or services) provided.</string>
+    <string name="adequatesolution">Current strategies are adequate and documented in student\'s IEP.</string>
+    <string name="title_activity_at__list">AT_List</string>
+    <string name="reading">Reading</string>
+    <string name="writing">Writing</string>
+    <string name="spelling">Spelling</string>
+    <string name="math">Math</string>
+    <string name="Listening">Listening</string>
+    <string name="Task">Task</string>
+    <string name="discussion">Trial Discussion</string>
+    <string name="attried">AT or Service tried: </string>
+
+    <string-array name="atareas">
+        <item>@string/reading</item>
+        <item>@string/writing</item>
+        <item>@string/spelling</item>
+        <item>@string/math</item>
+        <item>@string/Listening</item>
+    </string-array>
+    <string-array name="readSolutions">
+        <item>Page fluffers (e.g. foam paper clipped to pages to separate them)</item>
+        <item>Slant boards and book holders for positioning books</item>
+        <item>Color Overlays</item>
+        <item>Tracking strategies (e.g reading window, bar magnifier)</item>
+        <item>Speaking spell checker or dictionary as a word recognition aid (e.g. Franklin Talking Dictionary)</item>
+        <item>Reading Pen (e.g. Personal Reading Assistant, Quicktionary II)</item>
+        <item>Audio-taped books (e.g. books-on-tape from Recordings for the Blind and Dyslexic, commercial audio books)</item>
+        <item>Electronic books (e.g. teacher made, Bookshare)</item>
+        <item>Portable reading system for digital audio books (e.g. ClassMate)</item>
+        <item>Computer with graphic-based word processor (e.g. Writing with Symbols, Pix Writer)</item>
+        <item>Computer with talking word processing software (e.g. Write:Outloud, IntelliTalk)</item>
+        <item>Computer with word prediction software (e.g. Co:Writer, WordQ)</item>
+        <item>Scanner and computer with form filling software to create electronic worksheets</item>
+        <item>Computer with graphic word processor (e.g. Writing with Symbols, Pix Writer)</item>
+        <item>Computer with text enlargement software (e.g. ZoomText)</item>
+        <item>Computer with text reading software (e.g. Read:OutLoud, ReadPlease, Talk-to-Me)</item>
+        <item>Computer-based advanced reading aids (e.g. Kerzweil 3000, WYNN)</item>
+        <item>Solutions for converting text into alternative format (e.g. scanner with OCR software, Braille translation software, Braille printer)</item>
+    </string-array>
+    <string-array name="writeSolutions">
+        <item>Pencil grip or other adapted writing aids</item>
+        <item>Adapted paper (e.g. bold line, raised line. different spacing, secured to desk, paper stabilizers)</item>
+        <item>Slant board</item>
+        <item>Personal dry erase board</item>
+        <item>Non-slip writing surface (e.g. Dycem)</item>
+        <item>Tape recorder for dictated responses and note taking</item>
+        <item>Portable word processor</item>
+        <item>Notetaking device (e.g. Braille, adapted tape recorder, Smartboard, Notetaker)</item>
+        <item>Computer with word processing software with spell and grammar checks (e.g. Microsoft Word)</item>
+        <item>Computer with word processing software and outlining/webbing software (e.g. Inspiration, Kidspiration, DraftBuilder)</item>
+        <item>Computer with graphic-based word processor (e.g. Writing with Symbols, Pix Writer)</item>
+        <item>Computer with talking word processing software (e.g. Write:OutLoud, IntelliTalk)</item>
+        <item>Computer with word prediction software (e.g. Co:Writer, WordQ)</item>
+        <item>Scanner and computer with form filling software to create electronic worksheets</item>
+    </string-array>
+    <string-array name="spellingSolutions">
+        <item>Personal dry erase board for practice</item>
+        <item>Tape recorder with difficult to spell words recorded</item>
+        <item>Hand-held spellchecker without auditory output (e.g. Franklin)</item>
+        <item>Hand-held spellchecker with auditory output (e.g. Franklin Talking Dictionary)</item>
+        <item>Portable word processor with built-in spellchecker (e.g. Neo, The Writer)</item>
+        <item>Computer with word processing software with spell check feature (e.g. Microsoft Word)</item>
+        <item>Computer with talking word processing software containing speaking spell check (e.g. Write:OutLoud)</item>
+        <item>Computer with word prediction software, (e.g. Co:Writer, WordQ)</item>
+    </string-array>
+    <string-array name="mathSolutions">
+        <item>Modified paper (e.g. bold line, enlarged, raised line, graph paper etc.)</item>
+        <item>Talking calculator with speech output</item>
+        <item>Calculator with large print display</item>
+        <item>Calculator with large keypad</item>
+        <item>Calculator with embossed output</item>
+        <item>Computer based on-screen calculator</item>
+        <item>Electronic math worksheet software with adaptive input and output as needed (e.g. MathPad, MathPad by Voice, Study)</item>
+        <item>Graphing calculator software (e.g. Accessible Graphing Calculator)</item>
+        <item>Virtual Math Manipulatives</item>
+        <item>Online math activities (e.g. http://illuminations.nctm.org)</item>
+        <item>Adapted measuring devices (e.g. devices with speech output, large print display, or tactile output)</item>
+    </string-array>
+
+    <string-array name="listeningSolutions">
+        <item>Personal amplification system</item>
+        <item>Classroom sound field system</item>
+        <item>Auditory trainer</item>
+        <item>Personal hearing aid</item>
+        <item>Tape recorder with indexing capability</item>
+        <item>Smart Board for transferring teacher written notes to student computer for viewing or printing and reviewing</item>
+        <item>Environmental alert system</item>
+        <item>Voice to text software application for converting teacher lecture to text</item>
+        <item>Closed captioning on non-caption ready instructional materials</item>
+        <item>Real time captioning of class lecture and discussion</item>
+    </string-array>
+
+    <string name="title_activity_second_trial">SecondTrial</string>
+    <string name="title_activity_revisit_first_trial">RevisitFirstTrial</string>
+    <string name="title_activity_form__summary">Form_Summary</string>
+    <string name="title_activity_revisit_second_trial">RevisitSecondTrial</string>
+
+    <!--start new from 03/05/2018-->
+    <string name="save">save</string>
+    <!--first trial-->
+    <string name="trial_1">1st Trial</string>
+    <string name="trial_2">2nd Trial</string>
+    <string name="trial_at_subtitle">Describe new AT or services to be tried or modified.</string>
+    <string name="provider">Responsible person(s)/Provider(s)</string>
+    <string name="trial_at_hint">Enter service here or click "+" button to look up the idea bank.</string>
+
+
+    <!--check fields -->
+    <string name="field_instru_area">Please select at least one instructional area.</string>
+    <string name="field_uncomplete">The form is not completed, please fill all the information</string>
+    <string name="field_student_id">Student Id must contain 3-9 letters or numbers with a maximum of 2 letters.</string>
+    <string name="field_student_id_info">Student Id Format: 3-9 letters or numbers, at most 2 letters</string>
+    <string name="delete_task_warning">All, if any, information related to this deleted task will not apprear on the following screens and will be erased</string>
+
+    <!--revisit first trial-->
+    <string name="trial_action">Describe action to be taken</string>
+    <string name="trial_when">By when</string>
+
+    <string name="delete_notice">Confirm to delete this record?</string>
+    <string name="save_notice">Do you want to save this information before going to the home page?</string>
+    <string name="save_id_failed">Cannot save this student information because studentId is not in correct format.</string>
+    <string name="field_new_at">Please fill every AT service before adding new AT service.</string>
+
+    <!--trial2 discussion-->
+    <string name="add_info_after">Since some of your trials were not successful make referral to your school division for Assistive Technology Assesment. For additional information, go to link below: </string>
+    <string name="add_info_link">http://ttaconline.org/atsdp/</string>
+
+    <string name="help_title">Click on the process (rectangle shape) or decision (diamond shape) to know more about it.</string>
+    <string name="eligible">Great, student is eligible for AIM-VA materials. \nVisit https://aimva.org/ for more information.</string>
+    <string name="deselect_area_alert">All, if any, informatin (Tasks/ATs etc) related to this deselected area will not apppear on all following screens and will be ERASED if you SAVE this student record afterwards or when you touch NEXT button.</string>
+
+    <string name="eligibility_requirement">There are two requirements that must be met to assure a student is eligible for AIM-VA materials: </string>
+    <string name="eligibility_yes">Has both!</string>
+    <string name="eligibility_no">Does not have both.</string>
+    <string name="eligbility_require_msg">1. The student has an Individualized Education Program (IEP) that indicates the student MAY benefit from using alternative print materials for reading. \n
+        2. The student has a print disability due to one of the following:\n*Low Vision/Blindness\n*Physical Disabilities\n*Other Disabilities</string>
+    <string name="not_eligble">Sorry, student is not eligible for AIM-VA materials.\nVisit https://aimva.org/ for more information</string>
+    <string name="eligble">Great, student is eligible for AIM-VA materials.\nVisit https://aimva.org/ for more information</string>
+
+    <string name="specify_other">Please specify other area detail.</string>
+
+    <string name="agreement_title">Confidentiality Agreement:</string>
+    <string name="agreement">All users must adhere to the local school division/agency policies and procedures
+        to ensure the protection of confidentiality of personally identifiable information of students\'
+        scholastic records during the collection, storage, disclosure and destruction of informaion.</string>
+    <string name="agreement_alert">Sorry! You must agree to the confidentiality agreement.</string>
+    <string name="title_activity_guide">GuideActivity</string>
+
+    <string name="iepgoal_no">You have indicated no instructional areas identified. If this is correct, press "OK", which will end this form and ERASE all the information entered after this page if YES was chosen before. Otherwise select "Cancel".</string>
+    <string name="ins_area">Identify instructional area that is difficult for the student</string>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="@dimen/abc_action_bar_default_height_material"
+	android:orientation="horizontal"
+	android:background="@drawable/actionbarbackground"
+	android:layout_alignParentTop="true"
+	>
+
+    <ImageButton
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_home"
+        android:background="@drawable/actionbarbackground"
+        android:contentDescription="New"
+       />
+
+    <TextView android:id="@+id/actionbartitle" android:layout_height="match_parent" android:layout_width="wrap_content"
+       android:layout_gravity="center_horizontal|center_vertical" android:gravity="center_horizontal|center_vertical"
+       android:textColor="@color/title_color"
+       android:text="@string/title_main"
+       android:textStyle="bold"
+		android:layout_weight="1"
+       />
+
+
+	<ImageButton
+		android:id="@+id/save_record"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:src="@drawable/save"
+        android:textColor="@android:color/holo_blue_dark"
+		android:scaleType="fitCenter"
+		android:background="@drawable/actionbarbackground"
+		android:contentDescription="@string/save"
+		android:paddingLeft="10dp"
+		android:paddingRight="10dp"
+		/>
+
+    	<ImageButton
+        android:id="@+id/helpbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="Help"
+        android:scaleType="fitCenter"
+        android:textColor="@android:color/holo_blue_dark"
+        android:src="@drawable/help"
+        android:background="@drawable/actionbarbackground"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp"
+       />
+
+</LinearLayout>

@@ -1,0 +1,596 @@
+package edu.gmu.ttaconline.atcguide;
+
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
+import android.app.ActionBar;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
+import android.os.Bundle;
+import android.renderscript.Sampler;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.LinearLayout.LayoutParams;
+
+import edu.gmu.ttaconline.atcguide.ui.HelpPage;
+import edu.gmu.ttaconline.atcguide.ui.InstructionalAreas;
+import edu.gmu.ttaconline.atcguide.ui.MainActivity;
+
+public class IEPReading extends Activity {
+	Intent currentIntent;
+	Context context;
+	String IEPReading = "";
+	String IEPAlt = "";
+	RadioGroup read;
+	String eligibility = "na";
+	RadioGroup iepAlternative;
+	//if need to open aim later
+	String aim = "";
+	
+	ImageButton saveBtn;
+	ImageButton helpBtn;
+	ImageButton homeBtn;
+	private boolean isSample = false;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		try {
+			setContentView(R.layout.activity_iepreading);
+			setCustomActionBar();
+			Log.d("ATGUIDE", "on create");
+			context = getApplicationContext();
+			
+			setIntentFromDB();
+			checkUri();
+			setValuesFromIntent();
+			setRadioToView();
+			setNextListener();
+			
+		} catch (Exception e) {
+			Log.e("ATGUIDE", "Exception in IEP READING: " + e);
+		}
+
+		//done in main activity PersistenceBean.deleteNavigatorRecord(context, currentIntent.getStringExtra("studentid"), "AEM Navigator");
+	}
+
+	/**
+	 * Sets the Custom action bar to this view 
+	 */
+	protected void setCustomActionBar() {
+		/*getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+		ActionBar action = getActionBar();
+		getActionBar().setDisplayUseLogoEnabled(false);
+		getActionBar().setDisplayShowHomeEnabled(false);
+		action.setDisplayShowCustomEnabled(true);
+
+		getActionBar().setHomeButtonEnabled(false);
+		View v = getLayoutInflater().inflate(R.layout.action_main, null);
+//		v.findViewById(R.id.newrecord).setOnClickListener(
+//				new OnClickListener() {
+//					@Override
+//					public void onClick(View v) {
+//						//actionNew(v);
+//					}
+//				});
+		//v.findViewById(R.id.helpbutton).setOnClickListener(getHelpListener());
+		v.setLayoutParams(new LinearLayout.LayoutParams(
+				LayoutParams.MATCH_PARENT,
+				LinearLayout.LayoutParams.MATCH_PARENT));
+		getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		getActionBar().setCustomView(v);*/
+		saveBtn = (ImageButton) findViewById(R.id.save_record);
+		helpBtn = (ImageButton) findViewById(R.id.helpbutton);
+		homeBtn = (ImageButton) findViewById(R.id.home);
+		
+		saveBtn.setOnClickListener(listener);
+		helpBtn.setOnClickListener(listener);
+		homeBtn.setOnClickListener(listener);
+	}
+	
+	View.OnClickListener listener = new View.OnClickListener() {
+		@Override
+		public void onClick(View view) {
+			switch (view.getId()) {
+				case R.id.save_record:
+					if (!isSample) {
+						saveInfo();
+						Toast.makeText(context, "Information has been saved.", Toast.LENGTH_LONG).show();
+					}
+					else {
+						Toast.makeText(context, "Sample cannot be modified.", Toast.LENGTH_LONG).show();
+					}
+					break;
+				case R.id.helpbutton:
+					Intent intent = new Intent(IEPReading.this, HelpPage.class);
+					startActivity(intent);
+					break;
+				case R.id.home:
+					AlertDialog.Builder info = new AlertDialog.Builder(IEPReading.this);
+					info.setTitle("Alert");
+					info.setMessage(getResources().getString(
+							R.string.save_notice).toString());
+					info.setCancelable(true);
+					info.setPositiveButton("YES",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+													int id) {
+									if (!isSample) {
+										saveInfo();
+									}
+									else {
+										Toast.makeText(context, "Sample cannot be modified.", Toast.LENGTH_LONG).show();
+									}
+									((MyApplication)getApplication()).goHome();
+								}
+							});
+					info.setNeutralButton("NO",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+													int id) {
+									((MyApplication)getApplication()).goHome();
+								}
+							});
+					info.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int i) {
+							dialog.cancel();
+						}
+					});
+					AlertDialog infoAlert = info.create();
+					infoAlert.setCanceledOnTouchOutside(false);
+					infoAlert.setCancelable(false);
+					infoAlert.show();
+					break;
+			}
+		}
+	};
+	
+	/**
+	 * Set Intent From DB
+	 */
+	private void setIntentFromDB() {
+		/*
+		 * Effects: initialize intent from DB
+		 */
+//		currentIntent = getIntent();
+		currentIntent = PersistenceBean.getExistingIntent(
+				PersistenceBean.getCurrentId(context), context);
+		isSample = currentIntent.getBooleanExtra("sample", false);
+	}
+
+	/**
+	 * Check URI for redirection from another application
+	 */
+	private void checkUri() {
+		Uri uri = currentIntent.getData();
+		if (uri != null) {
+			String msgFromUrl = currentIntent.getDataString();
+			try {
+				msgFromUrl = java.net.URLDecoder.decode(msgFromUrl, "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * @see android.app.Activity#onResume()
+	 */
+	@Override
+	protected void onResume() {
+		super.onResume();
+		currentIntent = getIntent();
+		if (currentIntent.getData() != null
+				&& currentIntent.getData().toString()
+						.contains("http://iepreading.atguide.com")) {
+			Log.i("resume", "intent data");
+			if (currentIntent.getData().toString()
+					.equalsIgnoreCase("http://iepreading.atguide.com/yes")) {
+				AlertDialog dialog = new AlertDialog.Builder(this)
+						.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+							
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								eligibility = "no";//"yes";
+								currentIntent.putExtra("eligibility", eligibility);
+								currentIntent.setData(null);
+								currentIntent.setClass(context, TaskForm.class);
+								startActivity(currentIntent);
+							}
+						})
+						.setMessage(getResources().getString(R.string.eligible)).create();
+				dialog.setCanceledOnTouchOutside(false);
+				dialog.show();
+			} else if (currentIntent.getData().toString()
+					.equalsIgnoreCase("http://iepreading.atguide.com/no")) {
+				eligibility = "no";
+				Toast.makeText(context, "Not Eligible", Toast.LENGTH_SHORT)
+						.show();
+				currentIntent.putExtra("eligibility", eligibility);
+				currentIntent.setData(null);
+				currentIntent.setClass(context, TaskForm.class);
+				startActivity(currentIntent);
+			} else {
+				eligibility = "na";
+				Toast.makeText(context, "Not Eligible", Toast.LENGTH_SHORT)
+						.show();
+				currentIntent.putExtra("eligibility", eligibility);
+				currentIntent.setData(null);
+				currentIntent.setClass(context, TaskForm.class);
+				startActivity(currentIntent);
+			}
+		}
+		else{
+			currentIntent = PersistenceBean.getExistingIntent(PersistenceBean.getCurrentId(context), context);
+			isSample = currentIntent.getBooleanExtra("sample", false);
+		}
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		Log.i("restore", " call on restore");
+		super.onRestoreInstanceState(savedInstanceState);
+		if (currentIntent.getData() != null
+				&& currentIntent.getData().toString()
+						.contains("http://iepreading.atguide.com")) {
+			
+		}
+	}
+
+	/**
+	 * Set listener to forward the view to the next activity.
+	 */
+	private void setNextListener() {
+		Button next = (Button) findViewById(R.id.nextbutton);
+		next.setOnClickListener(new Button.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+			if (saveInfo()){
+				if (currentIntent.getBooleanExtra("open", false)){
+					currentIntent.putExtra("open", true);
+				}
+				startActivity(currentIntent);
+			}
+			}
+		});
+	}
+	
+	/**
+	 *
+	 * @return true if go to next activity, false if open AIM
+	 */
+	private boolean saveInfo(){
+		setRadioValues();
+		if (!isSample) {
+			currentIntent.putExtra("iepreading", IEPReading);
+			currentIntent.putExtra("iepaltradio", IEPAlt);
+		}
+		if (IEPAlt.trim().equalsIgnoreCase("NO") && IEPReading.trim().equalsIgnoreCase("NO")) {
+			currentIntent.putExtra("iepalt", "no");
+			currentIntent.setClass(context, TaskForm.class);
+			if (!isSample) {
+				PersistenceBean.persistIntent(currentIntent.getStringExtra("studentid"), currentIntent, context);
+				PersistenceBean.persistCurrentId(currentIntent.getStringExtra("studentid"), context);
+				PersistenceBean.deleteNavigatorRecord(context, currentIntent.getStringExtra("studentid"), "AEM Navigator");
+			}
+			return true;
+		} else {
+			showDialog();
+			return false;
+		}
+		
+	}
+	
+	//two requirement dialog displaying
+	private void showRequirementDialog(){
+
+		PersistenceBean.deleteNavigatorRecord(context, currentIntent.getStringExtra("studentid"), "AEM Navigator");
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(IEPReading.this);
+		builder.setCancelable(true);
+		builder.setTitle(getResources()
+				.getString(R.string.eligibility_requirement));
+		builder.setMessage(getResources().getString(
+				R.string.eligbility_require_msg));
+		builder.setPositiveButton(getResources().getString(R.string.eligibility_yes),
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog,int which) {dialog.dismiss();
+						showEligibleDialog();
+					}
+				});
+		builder.setNegativeButton(getResources().getString(R.string.eligibility_no),
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+						showNonEligibleDialog();
+					}
+				});
+		builder.setCancelable(false);
+		builder.show();
+	}
+	
+	//student is not eligible note
+	private void showNonEligibleDialog(){
+		aim = "no";
+		currentIntent.putExtra("iepalt", aim);
+		AlertDialog.Builder builder = new AlertDialog.Builder(IEPReading.this);
+		builder.setCancelable(true);
+		builder.setTitle("Student Not Eligible");
+		builder.setMessage(getResources().getString(
+				R.string.not_eligble));
+		builder.setPositiveButton("OK",
+				new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog,
+					
+										int which) {
+						dialog.dismiss();
+						currentIntent.setClass(context,
+								TaskForm.class);
+						if (!isSample) {
+							currentIntent.putExtra("eligibility", "no");
+							currentIntent.setData(null);
+							PersistenceBean.persistIntent( currentIntent .getStringExtra("studentid"), currentIntent, context);
+							PersistenceBean.persistCurrentId( currentIntent.getStringExtra("studentid"), context);
+						}
+						startActivity(currentIntent);
+					}
+				});
+		builder.setCancelable(false);
+		builder.show();
+	}
+	
+	//display when student is eligible for AIM-VA
+	private void showEligibleDialog(){
+		aim = "no";//"yes";
+		currentIntent.putExtra("iepalt", aim);
+		AlertDialog.Builder builder = new AlertDialog.Builder(IEPReading.this);
+		builder.setCancelable(true);
+		builder.setTitle("Student Eligible");
+		builder.setMessage(getResources().getString(
+				R.string.eligble));
+		builder.setPositiveButton("OK",
+				new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog,
+										int which) {
+						currentIntent.setClass(context, TaskForm.class);
+						if (!isSample) {
+							currentIntent.putExtra("eligibility", "no");//yes
+							currentIntent.setData(null);
+							PersistenceBean.persistIntent(currentIntent.getStringExtra("studentid"), currentIntent, context);
+							PersistenceBean.persistCurrentId(currentIntent.getStringExtra("studentid"), context);
+						}
+						startActivity(currentIntent);
+						dialog.dismiss();
+					}
+				});
+		builder.setCancelable(false);
+		builder.show();
+	}
+	
+	private void showDialog(){
+		AlertDialog.Builder builder = new AlertDialog.Builder(IEPReading.this);
+		builder.setCancelable(true);
+		builder.setTitle(getResources()
+				.getString(R.string.AIMTitle));
+		builder.setMessage(getResources().getString(
+				R.string.AIMCall));
+		builder.setPositiveButton("Yes",
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// go to the AIM VA Eligibility at
+						// http://aimeligibility.com
+						/*Uri aimEligible = Uri
+								.parse("http://aimeligibility.com/");
+						try {
+							Intent aimIntent = new Intent(
+									Intent.ACTION_VIEW, aimEligible);
+							aimIntent
+									.addFlags(Intent.URI_INTENT_SCHEME);
+							aimIntent
+									.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+							aimIntent
+									.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+							aimIntent.putExtras(currentIntent);
+							aimIntent
+									.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+							aimIntent
+									.setDataAndNormalize(aimEligible);
+							PackageManager packageManager = getPackageManager();
+							List<ResolveInfo> activities = packageManager
+									.queryIntentActivities(
+											aimIntent, 0);
+							boolean isIntentSafe = activities
+									.size() > 0;
+							boolean installed = false;
+							if (isIntentSafe) {
+								for (ResolveInfo resolveInfo : activities) {
+									if (resolveInfo.activityInfo.packageName
+											.contains("aim")) {
+										installed = true;
+										aimIntent
+												.setPackage(resolveInfo.activityInfo.packageName);
+									}
+								}
+							}
+							PersistenceBean.persistIntent(aimIntent
+											.getStringExtra("studentid"),
+									currentIntent, context);
+							PersistenceBean.persistCurrentId(
+									aimIntent.getStringExtra("studentid"),
+									context);
+							if (installed)
+								startActivity(aimIntent);
+							else {
+								Toast.makeText(
+										context,
+										"AIM Eligibility not installed",
+										Toast.LENGTH_SHORT).show();
+								aimIntent = new Intent(
+										Intent.ACTION_VIEW,
+										(Uri.parse("market://aimeligibility.com")));
+								aimIntent.putExtras(currentIntent);
+								startActivity(aimIntent);
+							}
+							finish();
+						} catch (Exception e) {
+							Log.e("ATGUIDE", " " + e.getMessage());
+						}*/
+						dialog.dismiss();
+						showRequirementDialog();
+					}
+				});
+		builder.setNegativeButton("No",
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog,
+										int which) {
+						try {
+							aim = "no";
+							currentIntent.setClass(context, TaskForm.class);
+							if (!isSample) {
+								currentIntent.putExtra("iepalt", aim);
+								currentIntent.putExtra("eligibility", "no");//yes
+								currentIntent.setData(null);
+								PersistenceBean.persistIntent(currentIntent.getStringExtra("studentid"), currentIntent, context);
+								PersistenceBean.persistCurrentId(currentIntent.getStringExtra("studentid"), context);
+							}
+							startActivity(currentIntent);
+						} catch (Exception unknown) {
+							Log.e("ATGUIDE",
+									"EX: " + unknown.getMessage());
+						}
+					}
+				});
+		builder.setNeutralButton("Cancel",
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}
+				});
+		builder.setCancelable(false);
+		builder.show();
+	}
+
+	protected void setRadioValues() {
+		read = (RadioGroup) findViewById(R.id.read);
+		read.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup radioGroup, int i) {
+				IEPReading = ((RadioButton) radioGroup.findViewById(i)).getText().toString();
+			}
+		});
+		int selectedId = read.getCheckedRadioButtonId();
+		RadioButton radio = (RadioButton) findViewById(selectedId);
+		IEPReading = (String) radio.getText();
+		iepAlternative = (RadioGroup) findViewById(R.id.iepalternative);
+		iepAlternative.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup radioGroup, int i) {
+				IEPAlt = ((RadioButton) radioGroup.findViewById(i)).getText().toString();
+			}
+		});
+		RadioButton iepaltradio = (RadioButton) findViewById(iepAlternative.getCheckedRadioButtonId());
+		IEPAlt = (String) iepaltradio.getText();
+	}
+
+	private void setValuesFromIntent() {
+		IEPReading = "" + currentIntent.getStringExtra("iepreading");
+		IEPAlt = "" + currentIntent.getStringExtra("iepaltradio");
+	}
+
+	/**
+	 * Set radio to the view
+	 * 
+	 */
+	private void setRadioToView() {
+
+		read = (RadioGroup) findViewById(R.id.read);
+	
+		if (IEPReading != null && IEPReading.equalsIgnoreCase("Yes")) {
+			
+			RadioButton iepreader = (RadioButton) findViewById(R.id.iepreadyes);
+			read.check(iepreader.getId());
+		} else {
+			RadioButton iepreader = (RadioButton) findViewById(R.id.iepreadno);
+			read.check(iepreader.getId());
+			iepreader.callOnClick();
+		}
+
+		iepAlternative = (RadioGroup) findViewById(R.id.iepalternative);
+		
+		if (IEPAlt != null && IEPAlt.equalsIgnoreCase("Yes")) {
+			RadioButton iepaltr = (RadioButton) findViewById(R.id.iepaltyes);
+			iepAlternative.check(iepaltr.getId());
+		} else {
+			RadioButton iepaltr = (RadioButton) findViewById(R.id.iepaltno);
+			iepAlternative.check(iepaltr.getId());
+		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.iepreading, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		// outState.pu
+		read = (RadioGroup) findViewById(R.id.read);
+		int selectedId = read.getCheckedRadioButtonId();
+		RadioButton radio = (RadioButton) findViewById(selectedId);
+		read = (RadioGroup) findViewById(R.id.read);
+		IEPReading = (String) radio.getText();
+		iepAlternative = (RadioGroup) findViewById(R.id.iepalternative);
+		RadioButton iepaltradio = (RadioButton) findViewById(iepAlternative
+				.getCheckedRadioButtonId());
+		IEPAlt = (String) iepaltradio.getText();
+		IEPReading = (String) radio.getText();
+		iepAlternative = (RadioGroup) findViewById(R.id.iepalternative);
+		IEPAlt = (String) iepaltradio.getText();
+		super.onSaveInstanceState(outState);
+
+	}
+
+}

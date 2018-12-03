@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.gmu.ttaconline.atcguide"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="25.3.1" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:name="edu.gmu.ttaconline.atcguide.MyApplication"
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:testOnly="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.ui.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="relaunch.activity.ACTIVITY_SELF_START_INTENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="edu.gmu.ttaconline.atcguide.PDFLogic"
+            android:exported="false" />
+
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.ui.InputForm"
+            android:label="@string/title_activity_input_form"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.ui.IEPGoals"
+            android:label="@string/title_activity_iepgoals"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.ui.InstructionalAreas"
+            android:label="@string/title_activity_instructional_areas"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.IEPReading"
+            android:label="@string/title_activity_iepreading"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="iepreading.atguide.com"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.TaskForm"
+            android:label="@string/title_activity_task_form"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.Waiting"
+            android:label="@string/title_activity_waiting"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.FirstTrial"
+            android:label="@string/title_activity_first_trial"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="relaunch.activity.ACTIVITY_SELF_START_INTENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="trial1.atguide.com"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.AT_List"
+            android:label="@string/title_activity_at__list"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.SecondTrial"
+            android:label="@string/title_activity_second_trial" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="relaunch.activity.ACTIVITY_SELF_START_INTENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="trial2.atguide.com"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.RevisitFirstTrial"
+            android:label="@string/title_activity_revisit_first_trial"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="relaunch.activity.ACTIVITY_SELF_START_INTENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="revisitTrial1.atguide.com"
+                    android:scheme="http" />
+                <!--
+                    <data
+                    android:host="trial1.atguide.com"
+                    android:scheme="http" />
+                -->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.Form_Summary"
+            android:label="@string/title_activity_form__summary" />
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.RevisitSecondTrial"
+            android:label="@string/title_activity_revisit_second_trial" />
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.ui.HelpPage"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="edu.gmu.ttaconline.atcguide.ui.GuideActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="com.amitshekhar.DebugDBInitProvider"
+            android:authorities="edu.gmu.ttaconline.atcguide.DebugDBInitProvider"
+            android:enabled="true"
+            android:exported="false" />
+        <provider
+            android:name="com.android.tools.ir.server.InstantRunContentProvider"
+            android:authorities="edu.gmu.ttaconline.atcguide.com.android.tools.ir.server.InstantRunContentProvider"
+            android:multiprocess="true" />
+    </application>
+
+</manifest>

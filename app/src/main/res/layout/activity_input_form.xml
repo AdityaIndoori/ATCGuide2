@@ -1,0 +1,290 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/atgback1"
+    tools:context="edu.gmu.ttaconline.atcguide.ui.InputForm">
+
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_form" />
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/action_bar"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/titleback"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/savedformback"
+            android:text="@string/studentInformation"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/nextbuttonlayout"
+        android:layout_below="@+id/header"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/tableback"
+        android:fillViewport="true"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rowback"
+            android:divider="@drawable/dividerline"
+            android:dividerPadding="15sp"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:weightSum="100">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="13"
+                android:gravity="center_vertical"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="20"
+                    android:gravity="end">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="0dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="15dp"
+                        android:paddingTop="10dp"
+                        android:textColor="@color/text_hint_title"
+                        android:text="@string/student"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="80"
+                    android:gravity="start">
+
+                    <EditText
+                        android:id="@+id/studentid"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/textviewback"
+                        android:hint="@string/student"
+                        android:inputType="text" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:layout_weight="13"
+                android:gravity="center_vertical"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="20"
+                    android:gravity="end">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="0dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="15dp"
+                        android:paddingTop="10dp"
+                        android:text="@string/grade"
+                        android:textColor="@color/text_hint_title"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="80"
+                    android:gravity="start">
+
+                    <Spinner
+                        android:id="@+id/studentgrade"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/textviewback"
+                        android:entries="@array/gradearray"
+
+                        android:hint="@string/grade"
+                        android:spinnerMode="dropdown"
+
+                        />
+                    <!--  <EditText
+                         android:layout_width="fill_parent"
+                         android:layout_height="wrap_content"
+                        android:background="@drawable/textviewback"
+                         android:hint="@string/grade"
+                         android:id="@+id/studentgrade"
+                         android:inputType="text" /> -->
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="13"
+                android:gravity="center_vertical"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="20"
+                    android:gravity="end">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="0dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="15dp"
+                        android:paddingTop="10dp"
+                        android:text="@string/school"
+                        android:textColor="@color/text_hint_title"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="80"
+                    android:gravity="start">
+
+                    <EditText
+                        android:id="@+id/studentschool"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/textviewback"
+                        android:hint="@string/school"
+                        android:inputType="text" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="24"
+                android:gravity="center_vertical"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="20"
+                    android:gravity="end">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="0dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="15dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/text_hint_title"
+                        android:text="@string/participants"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="80"
+                    android:gravity="start">
+
+                    <EditText
+                        android:id="@+id/participants"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/textviewback"
+                        android:hint="@string/participants"
+                        android:inputType="textMultiLine"
+                        android:minLines="2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textviewback"
+                android:gravity="left"
+                android:layout_weight="32"
+                android:weightSum="100"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date"
+                    android:layout_weight="20"
+                    android:textColor="@color/text_hint_title"
+                    android:textSize="18sp" />
+
+                <DatePicker
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/textviewback"
+                    android:calendarViewShown="false"
+                    android:spinnersShown="true" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/nextbuttonlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/titleback"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/nextbutton"
+            android:layout_width="@dimen/y120"
+            android:layout_height="@dimen/x50"
+            android:layout_marginBottom="@dimen/x5"
+            android:padding="4dp"
+            android:background="@drawable/mybutton"
+            android:text="@string/next" />
+
+    </LinearLayout>
+</RelativeLayout>
