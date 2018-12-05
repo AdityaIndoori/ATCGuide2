@@ -1,230 +1,245 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/text_white"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
 
-<LinearLayout
-    android:orientation="horizontal"
-    android:background="@drawable/actionbarbackground"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/abc_action_bar_default_height_material">
-
-    <ImageView
-        android:id="@+id/back"
-        android:contentDescription="Back"
-        android:layout_width="50dp"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:padding="8dp"
-        android:src="@drawable/back" />
-    <TextView android:id="@+id/actionbartitle" android:layout_height="match_parent" android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical" android:gravity="center_horizontal|center_vertical"
-        android:textColor="@color/title_color"
-        android:text="@string/title_main"
-        android:textStyle="bold"
-        android:layout_weight="1"
-        />
-</LinearLayout>
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/x10"
-        android:layout_marginRight="@dimen/x10"
-        android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x60">
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        android:background="@drawable/actionbarbackground"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:contentDescription="Back"
+            android:padding="8dp"
+            android:src="@drawable/back" />
+
         <TextView
+            android:id="@+id/actionbartitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:layout_weight="1"
-            android:text="@string/help_title"
-            android:textColor="@color/text_black"
-            android:layout_marginTop="10dp"
-            />
-        <Button
-            android:id="@+id/atinfo_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Additional Information about AT"
-            />
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/title_main"
+            android:textColor="@color/title_color"
+            android:textStyle="bold" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/help_title"
+            android:textColor="@color/text_black" />
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/atinfo_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Additional Information about AT" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/atGuide"
+        android:text="AT Guidelines"/>
+</LinearLayout>
+
+    </LinearLayout>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:layout_width="@dimen/y1280"
             android:layout_height="@dimen/x600"
-            android:src="@drawable/helppage"
             android:scaleType="fitXY"
-            />
+            android:src="@drawable/helppage" />
 
         <TextView
-            android:focusable="true"
             android:id="@+id/start"
             android:layout_width="@dimen/y170"
             android:layout_height="@dimen/x55"
             android:layout_marginLeft="@dimen/y30"
+            android:focusable="true"
             android:text="START"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
             android:textSize="15sp" />
+
         <TextView
-            android:focusable="true"
-            android:accessibilityTraversalAfter="@id/start"
             android:id="@+id/doc"
             android:layout_width="@dimen/y170"
             android:layout_height="@dimen/x55"
             android:layout_marginLeft="@dimen/y30"
             android:layout_marginTop="@dimen/x85"
+            android:accessibilityTraversalAfter="@id/start"
+            android:focusable="true"
             android:text="create new document"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
             android:textSize="15sp" />
 
         <TextView
-            android:focusable="true"
-            android:accessibilityTraversalAfter="@id/doc"
             android:id="@+id/stuinfo"
             android:layout_width="@dimen/y170"
             android:layout_height="@dimen/x52"
-            android:layout_alignLeft="@+id/doc"
             android:layout_below="@+id/doc"
+            android:layout_alignLeft="@+id/doc"
             android:layout_marginTop="@dimen/x20"
+            android:accessibilityTraversalAfter="@id/doc"
+            android:focusable="true"
             android:text="fill student info"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
             android:textSize="15sp" />
 
         <TextView
-            android:focusable="true"
-            android:accessibilityTraversalAfter="@id/stuinfo"
             android:id="@+id/part1"
             android:layout_width="@dimen/y80"
             android:layout_height="@dimen/x75"
-            android:layout_alignLeft="@+id/doc"
             android:layout_below="@+id/stuinfo"
+            android:layout_alignLeft="@+id/doc"
             android:layout_marginTop="@dimen/x53"
+            android:accessibilityTraversalAfter="@id/stuinfo"
+            android:focusable="true"
             android:text="part1 does the student have IEP goals that require AT?"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
             android:textSize="15sp" />
 
         <TextView
-            android:focusable="true"
-            android:accessibilityTraversalAfter="@id/part1"
             android:id="@+id/ins_area"
-            android:text="@string/ins_area"
-            android:textColor="@color/text_trans"
             android:layout_width="@dimen/y100"
             android:layout_height="@dimen/x105"
-            android:layout_toRightOf="@+id/part1"
-            android:layout_marginTop="@dimen/x240"
             android:layout_marginLeft="@dimen/y150"
-            />
+            android:layout_marginTop="@dimen/x240"
+            android:layout_toRightOf="@+id/part1"
+            android:accessibilityTraversalAfter="@id/part1"
+            android:focusable="true"
+            android:text="@string/ins_area"
+            android:textColor="@color/text_trans" />
 
         <TextView
-            android:focusable="true"
-            android:accessibilityTraversalAfter="@id/ins_area"
             android:id="@+id/diff_reading"
             android:layout_width="@dimen/y120"
             android:layout_height="@dimen/x70"
-            android:layout_toRightOf="@+id/ins_area"
             android:layout_below="@+id/stuinfo"
-            android:layout_marginTop="@dimen/x55"
             android:layout_marginLeft="50dp"
+            android:layout_marginTop="@dimen/x55"
+            android:layout_toRightOf="@+id/ins_area"
+            android:accessibilityTraversalAfter="@id/ins_area"
+            android:focusable="true"
             android:text="does the student have difficulty reading printed materials?"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
             android:textSize="15sp" />
 
         <TextView
-            android:focusable="true"
-            android:accessibilityTraversalAfter="@id/diff_reading"
             android:id="@+id/eligibility"
             android:layout_width="@dimen/y110"
             android:layout_height="@dimen/x55"
-            android:layout_marginTop="@dimen/x135"
             android:layout_marginLeft="110dp"
+            android:layout_marginTop="@dimen/x135"
             android:layout_toRightOf="@+id/ins_area"
+            android:accessibilityTraversalAfter="@id/diff_reading"
+            android:focusable="true"
             android:text="refer to A E M - Eligibility App"
             android:textColor="@color/text_trans"
-            android:textSize="15sp"
-            />
+            android:textSize="15sp" />
 
         <TextView
-            android:focusable="true"
-            android:accessibilityTraversalAfter="@id/eligibility"
             android:id="@+id/part2"
             android:layout_width="@dimen/y130"
             android:layout_height="@dimen/x105"
-            android:layout_toRightOf="@+id/diff_reading"
-            android:layout_marginTop="@dimen/x250"
             android:layout_marginLeft="@dimen/y75"
+            android:layout_marginTop="@dimen/x250"
+            android:layout_toRightOf="@+id/diff_reading"
+            android:accessibilityTraversalAfter="@id/eligibility"
+            android:focusable="true"
             android:text="part2 List what currently being used?"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
             android:textSize="15sp" />
 
-<!--consider complete-->
+        <!--consider complete-->
         <TextView
-            android:focusable="true"
-            android:accessibilityTraversalAfter="@id/part2"
             android:id="@+id/sol_working"
             android:layout_width="@dimen/y160"
             android:layout_height="@dimen/x70"
-            android:layout_toRightOf="@+id/part2"
             android:layout_below="@+id/stuinfo"
-            android:layout_marginTop="@dimen/x53"
             android:layout_marginLeft="@dimen/y65"
+            android:layout_marginTop="@dimen/x53"
+            android:layout_toRightOf="@+id/part2"
+            android:accessibilityTraversalAfter="@id/part2"
+            android:focusable="true"
             android:text="current solution is working?"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
             android:textSize="15sp" />
 
         <TextView
-            android:focusable="true"
-            android:accessibilityTraversalAfter="@id/sol_working"
             android:id="@+id/part3_1"
             android:layout_width="@dimen/y130"
             android:layout_height="@dimen/x105"
-            android:layout_toRightOf="@+id/sol_working"
-            android:layout_marginTop="@dimen/x250"
             android:layout_marginLeft="@dimen/y50"
+            android:layout_marginTop="@dimen/x250"
+            android:layout_toRightOf="@+id/sol_working"
+            android:accessibilityTraversalAfter="@id/sol_working"
+            android:focusable="true"
             android:text="part3(first) List new AT solutions"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
             android:textSize="15sp" />
 
         <TextView
-            android:visibility="gone"
             android:id="@+id/eligibility_result"
             android:layout_width="@dimen/y160"
             android:layout_height="@dimen/x60"
-            android:layout_toRightOf="@+id/part2"
-            android:layout_marginTop="@dimen/x130"
             android:layout_marginLeft="@dimen/y190"
+            android:layout_marginTop="@dimen/x130"
+            android:layout_toRightOf="@+id/part2"
             android:text="eligibility result is yes?"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:visibility="gone" />
 
         <TextView
-            android:visibility="gone"
             android:id="@+id/navigator"
             android:layout_width="@dimen/y205"
             android:layout_height="@dimen/x45"
-            android:layout_toRightOf="@+id/part2"
-            android:layout_marginTop="@dimen/x40"
             android:layout_marginLeft="@dimen/y230"
+            android:layout_marginTop="@dimen/x40"
+            android:layout_toRightOf="@+id/part2"
             android:text="Refer to AIMVA.ORG website"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:visibility="gone" />
 
         <TextView
-            android:focusable="true"
-            android:accessibilityTraversalAfter="@id/part3_1"
             android:id="@+id/first_trial"
             android:layout_width="@dimen/y160"
             android:layout_height="@dimen/x70"
@@ -232,6 +247,8 @@
             android:layout_alignStart="@id/part3_1"
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
+            android:accessibilityTraversalAfter="@id/part3_1"
+            android:focusable="true"
             android:text="Was first trial period successful?"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
@@ -239,45 +256,46 @@
 
         <TextView
 
-            android:focusable="true"
-            android:accessibilityTraversalAfter="@id/first_trial"
             android:id="@+id/at_referral"
             android:layout_width="@dimen/y200"
             android:layout_height="@dimen/x60"
             android:layout_below="@id/first_trial"
             android:layout_alignStart="@id/part2"
+            android:accessibilityTraversalAfter="@id/first_trial"
+            android:focusable="true"
             android:text="Make referral for Assistive Technology"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
             android:textSize="15sp" />
 
         <TextView
-            android:focusable="true"
-            android:accessibilityTraversalAfter="@id/at_referral"
             android:id="@+id/consider_complete"
             android:layout_width="@dimen/y230"
             android:layout_height="@dimen/x75"
-            android:layout_alignLeft="@+id/doc"
             android:layout_below="@+id/part1"
+            android:layout_alignLeft="@+id/doc"
             android:layout_marginTop="@dimen/x105"
+            android:accessibilityTraversalAfter="@id/at_referral"
+            android:focusable="true"
             android:text="consider complete"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
             android:textSize="15sp" />
 
         <TextView
-            android:focusable="true"
-            android:accessibilityTraversalAfter="@id/consider_complete"
             android:id="@+id/finish"
             android:layout_width="@dimen/y80"
             android:layout_height="@dimen/x75"
-            android:layout_toRightOf="@id/consider_complete"
-            android:layout_alignTop="@id/at_referral"
             android:layout_alignLeft="@id/diff_reading"
+            android:layout_alignTop="@id/at_referral"
+            android:layout_toRightOf="@id/consider_complete"
+            android:accessibilityTraversalAfter="@id/consider_complete"
+            android:focusable="true"
             android:text="FINISH"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/text_trans"
             android:textSize="15sp" />
     </RelativeLayout>
+</ScrollView>
 
 </LinearLayout>

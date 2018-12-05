@@ -43,9 +43,11 @@ public class HelpPage extends Activity {
     private ImageView back;
     private WebView webView;
     private String baseUrl = "file:///android_asset/";
-    private String atUrl = "file:///android_asset/ATResourceGuide.pdf";
+    private String atUrl = "http://ttaconline.org/atsdp";
     
     private Button atInfoBtn;
+    private Button atGuideBtn;
+
     private TextView doc;
     private TextView stuinfo;
     private TextView part1, part2;
@@ -76,7 +78,9 @@ public class HelpPage extends Activity {
         webView.loadUrl("file:///android_asset/help.html");*/
         
         atInfoBtn = (Button) findViewById(R.id.atinfo_btn);
+        atGuideBtn = (Button) findViewById(R.id.atGuide);
         atInfoBtn.setOnClickListener(listener);
+        atGuideBtn.setOnClickListener(listener);
         doc = (TextView) findViewById(R.id.doc);
         doc.setOnClickListener(listener);
         stuinfo = (TextView) findViewById(R.id.stuinfo);
@@ -155,10 +159,13 @@ public class HelpPage extends Activity {
         @Override
         public void onClick(View view) {
             switch (view.getId()){
-                case R.id.atinfo_btn:{
+                case R.id.atGuide:{
                     CopyReadAssets();
-                    //Uri uri = Uri.parse(atUrl);
-                    //startActivity(new Intent(Intent.ACTION_VIEW).setDataAndType(uri,"application/pdf"));
+                    break;
+                }
+                case R.id.atinfo_btn:{
+                    Uri uri = Uri.parse(atUrl);
+                    startActivity(new Intent(Intent.ACTION_VIEW,uri));
                     break;}
                 case R.id.doc:
                     ImageView docImg = new ImageView(HelpPage.this);
