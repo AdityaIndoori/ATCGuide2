@@ -387,7 +387,6 @@ public class FirstTrial extends FragmentActivity {
                 atlist.show(fragmentManager, "AT List");
             }
         });
-
     }
 
     /**
@@ -395,9 +394,6 @@ public class FirstTrial extends FragmentActivity {
      */
     private void setSpecialATListener() {
 
-        /* Requires: */
-        /* Modifies: */
-        /* Effects: */
         ImageButton add = (ImageButton) findViewById(R.id.addat);
         add.setImageResource(R.drawable.navigator);
         add.setOnClickListener(new View.OnClickListener() {
@@ -405,68 +401,6 @@ public class FirstTrial extends FragmentActivity {
             @Override
             public void onClick(View v) {
 
-                /** GO TO AIM Navigator **//*
-                Uri aimNavigator = Uri.parse("http://aimnavigator.com/");
-                try {
-                    Intent aimIntent = new Intent(Intent.ACTION_VIEW,
-                            aimNavigator);
-                    *//** Set FLAGS **//*
-                    aimIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-                    aimIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                            | Intent.FLAG_ACTIVITY_CLEAR_TOP
-                            | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-    
-                    String data = currentIntent.getStringExtra("studentid")
-                            + "," + currentIntent.getStringExtra("studentgrade")
-                            + "," + currentIntent.getStringExtra("studentparticipant")
-                            + "," + URI_FIRST_TRIAL;
-                    String []str = data.split(",");
-                    for (String s: str){
-                        Log.i("tag", s);
-                    }
-                    aimIntent.putExtra("studentid", data);
-                    aimIntent.putExtra("open", true);
-                    aimIntent.setData(aimNavigator);
-                    PackageManager packageManager = getPackageManager();
-                    List<ResolveInfo> activities = packageManager
-                            .queryIntentActivities(aimIntent, 0);
-                    boolean isIntentSafe = activities.size() > 0;
-                    boolean installed = false;
-                    if (isIntentSafe) {
-                        for (ResolveInfo resolveInfo : activities) {
-                            if (resolveInfo.activityInfo.packageName
-                                    .contains("aim")) {
-                                installed = true;
-                                aimIntent.setPackage(resolveInfo.activityInfo.packageName);
-                                break;
-                            }
-                        }
-                    }
-                    
-                    PersistenceBean.persistIntent(
-                            currentIntent.getStringExtra("studentid"),
-                            currentIntent, context);
-                    PersistenceBean.persistCurrentId(
-                            currentIntent.getStringExtra("studentid"), context);
-                    if (installed) {
-                        startActivity(aimIntent);
-                    } else {
-                        Toast.makeText(context, "AIM Explorer not installed",
-                                Toast.LENGTH_SHORT).show();
-                        aimIntent = new Intent(Intent.ACTION_VIEW, (Uri
-                                .parse("market://aimnavigator.com")));
-                        Toast.makeText(getApplicationContext(),
-                                "AIM Navigator not installed",
-                                Toast.LENGTH_SHORT).show();
-                        
-                        startActivity(aimIntent);
-                    }
-                    
-                } catch (Exception e) {
-                    Log.e("ATGUIDE", " " + e.getMessage());
-                }
-                
-            }*/
                 String stuId = currentIntent.getStringExtra("studentid");
                 String data = stuId.substring(0, stuId.length() - 14)
                         + "," + currentIntent.getStringExtra("studentgrade")
@@ -496,9 +430,7 @@ public class FirstTrial extends FragmentActivity {
                     startActivity(sendIntent);
                 } else {
                     Toast.makeText(context, "AIM Nav not installed", Toast.LENGTH_SHORT).show();
-                    /*sendIntent = new Intent(Intent.ACTION_VIEW, (Uri.parse("market://aimnavigator.com")));
-                    Toast.makeText(getApplicationContext(),"AEM Nav not installed",Toast.LENGTH_SHORT).show();
-                    startActivity(sendIntent);*/
+
                 }
             }
         });
@@ -1342,10 +1274,10 @@ public class FirstTrial extends FragmentActivity {
                             AT at = new AT();
                             at.task = t.taskname;
 //					at.ATName = "Choose AT";
-                            int ntasks=t.ats.size();
-                            int lstId=t.ats.get(ntasks-1).id;
+                            int ntasks = t.ats.size();
+                            int lstId = t.ats.get(ntasks - 1).id;
 
-                            assistiveTech.setId(lstId+1);//++
+                            assistiveTech.setId(lstId + 1);//++
 
                             at.instructionalArea = areaText;
                             at.id = assistiveTech.getId();

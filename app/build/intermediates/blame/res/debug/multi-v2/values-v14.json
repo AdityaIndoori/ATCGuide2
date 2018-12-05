@@ -1,29 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
+            "outputFile": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\values-v14\\values-v14.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\src\\main\\res\\values-v14\\styles.xml",
-                    "from": {
-                        "startLines": "7",
-                        "startColumns": "4",
-                        "startOffsets": "227",
-                        "endLines": "9",
-                        "endColumns": "12",
-                        "endOffsets": "361"
-                    },
-                    "to": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "4",
-                        "endColumns": "12",
-                        "endOffsets": "187"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\indoo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\6d2fb02309791649e80e1579aca38b4c\\res\\values-v14\\values-v14.xml",
+                    "source": "C:\\Users\\aindoori\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\d2f361f186c69d815df0e4aa678ae4f6\\res\\values-v14\\values-v14.xml",
                     "from": {
                         "startLines": "2,7,8,9,15,21,22,23,24,25,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
@@ -39,34 +20,34 @@
                         "endLines": "9,10,11,17,23,24,25,26,27,30,31,32",
                         "endColumns": "12,70,82,12,12,119,131,119,62,12,62,131",
                         "endOffsets": "463,534,617,1027,1449,1569,1701,1821,1884,2038,2101,2233"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\aindoori\\ATCGuide2\\app\\src\\main\\res\\values-v14\\styles.xml",
+                    "from": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "227",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "361"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "187"
                     }
                 }
             ]
         },
         {
-            "outputFile": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\values-v14\\values-v14.xml",
+            "outputFile": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\src\\main\\res\\values-v14\\styles.xml",
-                    "from": {
-                        "startLines": "7",
-                        "startColumns": "4",
-                        "startOffsets": "227",
-                        "endLines": "9",
-                        "endColumns": "12",
-                        "endOffsets": "361"
-                    },
-                    "to": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "4",
-                        "endColumns": "12",
-                        "endOffsets": "187"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\indoo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\6d2fb02309791649e80e1579aca38b4c\\res\\values-v14\\values-v14.xml",
+                    "source": "C:\\Users\\aindoori\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\d2f361f186c69d815df0e4aa678ae4f6\\res\\values-v14\\values-v14.xml",
                     "from": {
                         "startLines": "2,7,8,9,15,21,22,23,24,25,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
@@ -82,6 +63,25 @@
                         "endLines": "9,10,11,17,23,24,25,26,27,30,31,32",
                         "endColumns": "12,70,82,12,12,119,131,119,62,12,62,131",
                         "endOffsets": "463,534,617,1027,1449,1569,1701,1821,1884,2038,2101,2233"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\aindoori\\ATCGuide2\\app\\src\\main\\res\\values-v14\\styles.xml",
+                    "from": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "227",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "361"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "187"
                     }
                 }
             ]

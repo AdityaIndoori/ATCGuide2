@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
+            "outputFile": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\indoo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\6d2fb02309791649e80e1579aca38b4c\\res\\values-v18\\values-v18.xml",
+                    "source": "C:\\Users\\aindoori\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\d2f361f186c69d815df0e4aa678ae4f6\\res\\values-v18\\values-v18.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\values-v18\\values-v18.xml",
+            "outputFile": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\values-v18\\values-v18.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\indoo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\6d2fb02309791649e80e1579aca38b4c\\res\\values-v18\\values-v18.xml",
+                    "source": "C:\\Users\\aindoori\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\d2f361f186c69d815df0e4aa678ae4f6\\res\\values-v18\\values-v18.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

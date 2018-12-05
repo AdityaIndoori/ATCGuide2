@@ -1,26 +1,26 @@
 [
     {
-        "merged": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media.xml",
-        "source": "C:\\Users\\indoo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\6d2fb02309791649e80e1579aca38b4c\\res\\layout-v11\\notification_template_big_media.xml"
+        "merged": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\aindoori\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\d2f361f186c69d815df0e4aa678ae4f6\\res\\layout-v11\\notification_template_big_media_custom.xml"
     },
     {
-        "merged": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_cancel_action.xml",
-        "source": "C:\\Users\\indoo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\6d2fb02309791649e80e1579aca38b4c\\res\\layout-v11\\notification_media_cancel_action.xml"
+        "merged": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media.xml",
+        "source": "C:\\Users\\aindoori\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\d2f361f186c69d815df0e4aa678ae4f6\\res\\layout-v11\\notification_template_big_media.xml"
     },
     {
-        "merged": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
-        "source": "C:\\Users\\indoo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\6d2fb02309791649e80e1579aca38b4c\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
+        "merged": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
+        "source": "C:\\Users\\aindoori\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\d2f361f186c69d815df0e4aa678ae4f6\\res\\layout-v11\\notification_media_action.xml"
     },
     {
-        "merged": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
-        "source": "C:\\Users\\indoo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\6d2fb02309791649e80e1579aca38b4c\\res\\layout-v11\\notification_template_big_media_custom.xml"
+        "merged": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\aindoori\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\d2f361f186c69d815df0e4aa678ae4f6\\res\\layout-v11\\notification_template_big_media_narrow.xml"
     },
     {
-        "merged": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
-        "source": "C:\\Users\\indoo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\6d2fb02309791649e80e1579aca38b4c\\res\\layout-v11\\notification_template_big_media_narrow.xml"
+        "merged": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\aindoori\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\d2f361f186c69d815df0e4aa678ae4f6\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
     },
     {
-        "merged": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
-        "source": "C:\\Users\\indoo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\6d2fb02309791649e80e1579aca38b4c\\res\\layout-v11\\notification_media_action.xml"
+        "merged": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\aindoori\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\d2f361f186c69d815df0e4aa678ae4f6\\res\\layout-v11\\notification_media_cancel_action.xml"
     }
 ]
