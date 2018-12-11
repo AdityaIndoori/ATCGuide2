@@ -97,6 +97,9 @@
                 android:orientation="vertical"
                 android:weightSum="100" >
                 <TextView
+                    android:id="@+id/complete_txt"
+                    android:focusableInTouchMode="true"
+                    android:focusable="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"

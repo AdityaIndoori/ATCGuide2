@@ -59,20 +59,20 @@ public class TaskForm extends Activity implements Serializable {
     private static final String TAG = "ATGUIDE";
     Intent currentIntent;
     Intent persisted;
-//    String studentid = "";
+    //    String studentid = "";
     Context context;
     TextWatcher watcher[] = new TextWatcher[1000];
     boolean open = false;
     static int id = 3000;
     static int strategyRowid = 0;// to 20
     ArrayList<Integer> areaIds = new ArrayList<Integer>();
-    
+
     static int clickedId = id;
     LayoutInflater inflater;
     /**
-     *  if not enough to solve, then go to first trial
-     *  check solutions twice: first when open this page
-     *      second when save info
+     * if not enough to solve, then go to first trial
+     * check solutions twice: first when open this page
+     * second when save info
      */
     boolean trial1 = false;
     ArrayList<CharSequence> selectedInstructional;
@@ -87,16 +87,17 @@ public class TaskForm extends Activity implements Serializable {
     Area currentSelection = null;
     TextView currentText;
     Activity activity;
-    
+
     ImageButton saveBtn;
     ImageButton helpBtn;
     ImageButton homeBtn;
-    
+
     //check if there are some missing text
     boolean infoCheck = true;
     InputMethodManager imm;
-    
+
     boolean isSample = false;
+
     /*
      * (non-Javadoc)
      *
@@ -121,11 +122,11 @@ public class TaskForm extends Activity implements Serializable {
 //            studentid = currentIntent.getStringExtra("studentid");
             currentIntent.setData(null);
             inflater = getLayoutInflater();
-            
+
             // trial for any case ! using current intent
             getData();
-           
-           placeAreaFromDB();
+
+            placeAreaFromDB();
             // retrieveArea()if it is old
             LinearLayout first = (LinearLayout) merge.getItem(0);
             if (first.getChildAt(0) != null) {
@@ -146,7 +147,7 @@ public class TaskForm extends Activity implements Serializable {
                     .show();
         }
     }
-    
+
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -155,8 +156,7 @@ public class TaskForm extends Activity implements Serializable {
                     if (!isSample) {
                         saveInfo();
                         Toast.makeText(context, "Information has been saved.", Toast.LENGTH_LONG).show();
-                    }
-                    else {
+                    } else {
                         Toast.makeText(context, "Sample cannot be modified.", Toast.LENGTH_LONG).show();
                     }
                     break;
@@ -176,18 +176,17 @@ public class TaskForm extends Activity implements Serializable {
                                                     int id) {
                                     if (!isSample) {
                                         saveInfo();
-                                    }
-                                    else {
+                                    } else {
                                         Toast.makeText(context, "Sample cannot be modified.", Toast.LENGTH_LONG).show();
                                     }
-                                    ((MyApplication)getApplication()).goHome();
+                                    ((MyApplication) getApplication()).goHome();
                                 }
                             });
                     info.setNeutralButton("NO",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
                                                     int id) {
-                                    ((MyApplication)getApplication()).goHome();
+                                    ((MyApplication) getApplication()).goHome();
                                 }
                             });
                     info.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -204,7 +203,7 @@ public class TaskForm extends Activity implements Serializable {
             }
         }
     };
-    
+
     /**
      * Sets the Custom action bar to this view
      */
@@ -212,13 +211,13 @@ public class TaskForm extends Activity implements Serializable {
         saveBtn = (ImageButton) findViewById(R.id.save_record);
         helpBtn = (ImageButton) findViewById(R.id.helpbutton);
         homeBtn = (ImageButton) findViewById(R.id.home);
-        
+
         saveBtn.setOnClickListener(listener);
         helpBtn.setOnClickListener(listener);
         homeBtn.setOnClickListener(listener);
     }
-    
-    
+
+
     /**
      * Checks if first trial is required for any tasks, identifies the tasks for
      * first trial
@@ -253,7 +252,7 @@ public class TaskForm extends Activity implements Serializable {
             PersistenceBean.deleteSolutionRecords(PersistenceBean.getCurrentId(context), "trial1" + PersistenceBean.getCurrentId(context), solutionList, context);
         }
     }
-    
+
     /*
      * (non-Javadoc)
      *
@@ -263,7 +262,7 @@ public class TaskForm extends Activity implements Serializable {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
     }
-    
+
     /*
      * (non-Javadoc)
      *
@@ -274,9 +273,9 @@ public class TaskForm extends Activity implements Serializable {
         // Save Data
         super.onBackPressed();
         saveInfo();
-        
+
     }
-    
+
     /**
      * Intent From DB
      *
@@ -287,11 +286,11 @@ public class TaskForm extends Activity implements Serializable {
                 PersistenceBean.getCurrentId(getApplicationContext()),
                 getApplicationContext());
     }
-    
+
     /**
      * save information about area/task
      */
-    private void saveInfo(){
+    private void saveInfo() {
         if (!isSample) {
             PersistenceBean
                     .persistAreaObject(areasList, PersistenceBean.getCurrentId(getApplicationContext()), context);
@@ -301,7 +300,7 @@ public class TaskForm extends Activity implements Serializable {
         }
         validateSolutions();
     }
-    
+
     /**
      * Sets listener for the click of next button of this view
      */
@@ -311,23 +310,23 @@ public class TaskForm extends Activity implements Serializable {
             @Override
             public void onClick(View v) {
                 saveInfo();
-                if (trial1){
+                if (trial1) {
                     infoCheck = true;
-                    for (Area area: areasList){
-                        if (area.getTasks() == null || area.getTasks().size() <=0){
+                    for (Area area : areasList) {
+                        if (area.getTasks() == null || area.getTasks().size() <= 0) {
                             infoCheck = false;
                             Toast.makeText(TaskForm.this, getResources().getString(R.string.field_uncomplete), Toast.LENGTH_LONG).show();
                             break;
                         }
-                        for (Task task: area.getTasks()){
-                            if (TextUtils.isEmpty(task.getTaskname())||isStrategyEmpty(v)){
+                        for (Task task : area.getTasks()) {
+                            if (TextUtils.isEmpty(task.getTaskname()) || isStrategyEmpty(v)) {
                                 infoCheck = false;
                                 Toast.makeText(TaskForm.this, getResources().getString(R.string.field_uncomplete), Toast.LENGTH_LONG).show();
                                 break;
                             }
                         }
                     }
-                    if (infoCheck){
+                    if (infoCheck) {
                         // Alert About trial 1
                         AlertDialog.Builder info = new AlertDialog.Builder(activity);
                         info.setMessage(getResources()
@@ -364,8 +363,7 @@ public class TaskForm extends Activity implements Serializable {
                         infoAlert.setCancelable(false);
                         infoAlert.show();
                     }
-                }
-                else {
+                } else {
                     AlertDialog.Builder info = new AlertDialog.Builder(activity);
                     info.setMessage(getResources().getString(
                             R.string.adequatesolution).toString());
@@ -374,7 +372,7 @@ public class TaskForm extends Activity implements Serializable {
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
                                                     int id) {
-                    
+
                                     PDFLogic.activity = activity;
                                     // Intent pdfService= new
                                     // Intent(activity.getApplicationContext(),PDFLogic.class);
@@ -387,12 +385,12 @@ public class TaskForm extends Activity implements Serializable {
                                     checkPermission();
                                     if (permission) {
                                         Toast.makeText(context, "Please Wait", Toast.LENGTH_SHORT).show();
-                                        ((MyApplication)getApplication()).goHome();
+                                        ((MyApplication) getApplication()).goHome();
                                         Thread pdfThread = new Thread(new PDFLogic());
                                         pdfThread.start();
                                     }
-                    
-                    
+
+
                                 }
                             });
                     info.setNeutralButton("Cancel",
@@ -410,25 +408,24 @@ public class TaskForm extends Activity implements Serializable {
                 }
             }
         });
-        
+
     }
-    
+
     private static final int MY_PERMISSIONS_REQUEST_WRITE_FILE = 10000;
     private static boolean permission = false;
-    
-    private void checkPermission(){
+
+    private void checkPermission() {
         if (ContextCompat.checkSelfPermission(activity,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(activity,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     MY_PERMISSIONS_REQUEST_WRITE_FILE);
-        }
-        else {
+        } else {
             permission = true;
         }
     }
-    
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
@@ -438,17 +435,18 @@ public class TaskForm extends Activity implements Serializable {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(context, "Please Wait", Toast.LENGTH_SHORT).show();
-                    ((MyApplication)getApplication()).goHome();
+                    ((MyApplication) getApplication()).goHome();
                     Thread pdfThread = new Thread(new PDFLogic());
-                    pdfThread.start();;
-                    
+                    pdfThread.start();
+                    ;
+
                 } else {
                     permission = false;
                     Toast.makeText(activity, "file permission denied.", Toast.LENGTH_SHORT).show();
                 }
                 return;
             }
-            
+
             // other 'case' lines to check for other
             // permissions this app might request
         }
@@ -476,7 +474,7 @@ public class TaskForm extends Activity implements Serializable {
         });
         
     }*/
-    
+
     /**
      * Used to check if there is an empty strategy, used to avoid adding
      * strategy in case of empty strategy
@@ -504,9 +502,10 @@ public class TaskForm extends Activity implements Serializable {
         }
         return false;
     }
-    
+
     /**
      * delete task
+     *
      * @param v
      */
     private void setDeleteTaskListener(View v) {
@@ -551,21 +550,20 @@ public class TaskForm extends Activity implements Serializable {
                                 "At least one task is required for an area",
                                 Toast.LENGTH_SHORT).show();
                     }
-                }
-                else {
+                } else {
                     Toast.makeText(context,
                             "Sample cannot be modified.",
                             Toast.LENGTH_SHORT).show();
                 }
-                
+
             }
         });
     }
-    
+
     private void addPlusButtonListener() {
         ImageButton plusButton = (ImageButton) findViewById(R.id.addstrategy);
         plusButton.setOnClickListener(new OnClickListener() {
-            
+
             @SuppressLint("InflateParams")
             @Override
             public void onClick(View v) {
@@ -614,12 +612,12 @@ public class TaskForm extends Activity implements Serializable {
                         public void onTextChanged(CharSequence s, int start,
                                                   int before, int count) {
                         }
-        
+
                         @Override
                         public void beforeTextChanged(CharSequence s, int start,
                                                       int count, int after) {
                         }
-        
+
                         @Override
                         public void afterTextChanged(Editable s) {
                             t.strategies.put("" + id, new String(s.toString()));
@@ -645,17 +643,15 @@ public class TaskForm extends Activity implements Serializable {
                                 ((LinearLayout) findViewById(R.id.strategylayout))
                                         .removeView(row.findViewById(row.getId()));
                                 t.strategies.remove(id + "");
-                            }
-                            else {
+                            } else {
                                 Toast.makeText(context,
                                         "Sample cannot be modified.",
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
-                        
+
                     });
-                }
-                else {
+                } else {
                     Toast.makeText(context,
                             "Sample cannot be modified.",
                             Toast.LENGTH_SHORT).show();
@@ -663,7 +659,7 @@ public class TaskForm extends Activity implements Serializable {
             }
         });
     }
-    
+
     void onDeleteFirstStrategy() {
         ImageButton deletefirststrategy = (ImageButton) findViewById(R.id.deletestrategy0);
         deletefirststrategy.setOnClickListener(new OnClickListener() {
@@ -674,7 +670,7 @@ public class TaskForm extends Activity implements Serializable {
             }
         });
     }
-    
+
     private void getData() {
         try {
             selectedInstructional = PersistenceBean.getPersistedAreaList(
@@ -695,7 +691,7 @@ public class TaskForm extends Activity implements Serializable {
         } catch (Exception e) {
         }
     }
-    
+
     public Area getAreaById(int id) {
         for (Area area : areasList) {
             if (area != null && area.getParentId() == id) {
@@ -704,7 +700,7 @@ public class TaskForm extends Activity implements Serializable {
         }
         return null;
     }
-    
+
     public Area getAreaByName(CharSequence areaname) {
         if (areaname != null)
             for (Area area : areasList) {
@@ -716,7 +712,7 @@ public class TaskForm extends Activity implements Serializable {
             }
         return null;
     }
-    
+
     @SuppressLint("InflateParams")
     public void placeAreaFromDB() {
         LayoutParams textViewParams = new LayoutParams(
@@ -724,8 +720,8 @@ public class TaskForm extends Activity implements Serializable {
         ListView instructional = (ListView) findViewById(R.id.instructionalAreasList);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        lp.setMargins(0,5,0,0);
-    
+        lp.setMargins(0, 5, 0, 0);
+
         LinearLayout.LayoutParams tvlp = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f);
@@ -740,26 +736,25 @@ public class TaskForm extends Activity implements Serializable {
             v.setOrientation(LinearLayout.VERTICAL);
             v.setId(id++);
             TextView area = (TextView) v.findViewById(R.id.areatextview);
-            
+
             // area.setBackground(getResources().getDrawable(R.drawable.textviewback));
             Log.i("TaskForm", areaText + "");
             area.setText(areaText);
             area.setTextAlignment(TextView.TEXT_ALIGNMENT_TEXT_START);
             area.setLayoutParams(textViewParams);
             area.setId(id++);
-            
+
             Area areaObject = null;
-           
+
             areaObject = getAreaByName(areaText);
-            if (areaObject!=null) {
+            if (areaObject != null) {
                 area.setId(areaObject.getParentId());
-            }
-            else{
+            } else {
                 areaObject = new Area((String) areaText);
                 // areaObject.setAreaName((String) areaText);
                 areaObject.setParentId(area.getId());
             }
-            
+
             if (!areaObject.tasks.isEmpty()) {
                 for (Task t : areaObject.tasks) {
                     LinearLayout taskLinear = new LinearLayout(this);
@@ -770,8 +765,8 @@ public class TaskForm extends Activity implements Serializable {
                     final ImageView star = new ImageView(context);
                     star.setLayoutParams(imglp);
                     star.setImageResource(R.drawable.star);
-                    star.setPadding(4,4,4,4);
-                    
+                    star.setPadding(4, 4, 4, 4);
+
                     //task name
                     TextView task = new TextView(context);
                     task.setLayoutParams(tvlp);
@@ -779,13 +774,12 @@ public class TaskForm extends Activity implements Serializable {
                     task.setId(t.taskid);
                     task.setPadding(30, 0, 0, 0);
                     task.setTextColor(Color.BLACK);
-                    if (checkStar(t)){
+                    if (checkStar(t)) {
                         star.setVisibility(View.VISIBLE);
-                    }
-                    else{
+                    } else {
                         star.setVisibility(View.INVISIBLE);
                     }
-                    
+
                     task.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -824,10 +818,10 @@ public class TaskForm extends Activity implements Serializable {
                                 // of them
                                 strategyLayout.removeAllViews(); // instead of finding
                                 // and removing text
-                                
+
                                 // change listeners, just start over for every click
                                 // improved efficiency O(n)
-                                
+
                                 int i = -1;
                                 // for each of the strategy in the task object
                                 for (final String key : t.strategies.keySet()) {
@@ -855,12 +849,12 @@ public class TaskForm extends Activity implements Serializable {
                                         public void onTextChanged(CharSequence s,
                                                                   int start, int before, int count) {
                                         }
-                                        
+
                                         @Override
                                         public void beforeTextChanged(CharSequence s,
                                                                       int start, int count, int after) {
                                         }
-                                        
+
                                         @Override
                                         public void afterTextChanged(Editable s) {
                                             View v1 = (View) findViewById(clickedId);
@@ -873,10 +867,9 @@ public class TaskForm extends Activity implements Serializable {
                                             t.strategies.remove(id + "");
                                             t.strategies.put(id + "",
                                                     new String(s.toString()));
-                                            if (!TextUtils.isEmpty(s.toString()) && checkStar(t)){
+                                            if (!TextUtils.isEmpty(s.toString()) && checkStar(t)) {
                                                 star.setVisibility(View.VISIBLE);
-                                            }
-                                            else{
+                                            } else {
                                                 star.setVisibility(View.INVISIBLE);
                                             }
                                         }
@@ -913,14 +906,13 @@ public class TaskForm extends Activity implements Serializable {
                                                     Toast.makeText(context,
                                                             "Strategy deleted",
                                                             Toast.LENGTH_SHORT).show();
-        
+
                                                 } else
                                                     Toast.makeText(
                                                             context,
                                                             "At least one strategy is required",
                                                             Toast.LENGTH_SHORT).show();
-                                            }
-                                            else {
+                                            } else {
                                                 Toast.makeText(
                                                         context,
                                                         "Sample cannot be modified.",
@@ -930,19 +922,18 @@ public class TaskForm extends Activity implements Serializable {
                                     });
                                     // add accordingly
                                 }
-                            }
-                            else{
+                            } else {
                                 watcher[0] = new TextWatcher() {
                                     @Override
                                     public void onTextChanged(CharSequence s, int start,
                                                               int before, int count) {
                                     }
-        
+
                                     @Override
                                     public void beforeTextChanged(CharSequence s,
                                                                   int start, int count, int after) {
                                     }
-        
+
                                     @Override
                                     public void afterTextChanged(Editable s) {
                                         View v1 = (View) findViewById(clickedId);
@@ -952,48 +943,47 @@ public class TaskForm extends Activity implements Serializable {
                                         Task t = areaobj.getTaskById(clickedId);
                                         t.strategies.remove("0");
                                         t.strategies.put("0", new String(s.toString()));
-                                        if (!TextUtils.isEmpty(s.toString()) && checkStar(t)){
+                                        if (!TextUtils.isEmpty(s.toString()) && checkStar(t)) {
                                             star.setVisibility(View.VISIBLE);
-                                        }
-                                        else{
+                                        } else {
                                             star.setVisibility(View.INVISIBLE);
                                         }
                                     }
                                 };
                                 strategy.addTextChangedListener(watcher[0]);
                             }
-                            
+
                             ((TextView) findViewById(R.id.tasktitle)).setText(areaText);
                             final EditText taskname = (EditText) findViewById(R.id.taskname);
                             taskname.setText(taskviewText);
                             taskname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                                 @Override
                                 public void onFocusChange(View view, boolean b) {
-                                    if (b){
+                                    if (b) {
                                         String hint = taskname.getHint().toString();
                                         taskname.setTag(hint);
                                         taskname.setHint("");
-                                    }
-                                    else {
+                                    } else {
                                         String hint = taskname.getTag().toString();
                                         taskname.setHint(hint);
                                     }
                                 }
                             });
                             taskname.requestFocus();
-                            imm.showSoftInput(taskname,InputMethodManager.SHOW_FORCED);
+                            imm.showSoftInput(taskname, InputMethodManager.SHOW_FORCED);
                             taskname.removeTextChangedListener(taskWatcher);
                             taskWatcher = new TextWatcher() {
                                 @Override
                                 public void onTextChanged(CharSequence s, int start,
                                                           int before, int count) {
                                 }
+
                                 @Override
                                 public void beforeTextChanged(CharSequence s,
                                                               int start, int count, int after) {
                                     // TODO Auto-generated method stub
                                 }
-                                
+
                                 @Override
                                 public void afterTextChanged(Editable s) {
                                     // TODO Auto-generated method stub
@@ -1009,11 +999,10 @@ public class TaskForm extends Activity implements Serializable {
                                         Area areaobj = getAreaById(area.getId());
                                         Task t = areaobj.getTaskById(clickedId);
                                         t.setTaskname(s.toString());
-                                        if(!TextUtils.isEmpty(s.toString()) && checkStar(t)){
+                                        if (!TextUtils.isEmpty(s.toString()) && checkStar(t)) {
                                             ((LinearLayout) v1
                                                     .getParent()).getChildAt(1).setVisibility(View.VISIBLE);
-                                        }
-                                        else {
+                                        } else {
                                             ((LinearLayout) v1
                                                     .getParent()).getChildAt(1).setVisibility(View.INVISIBLE);
                                         }
@@ -1032,7 +1021,7 @@ public class TaskForm extends Activity implements Serializable {
                             } else {
                                 ((RadioButton) solutions.findViewById(R.id.solutionno))
                                         .setChecked(true);
-                                
+
                             }
                             solutions
                                     .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -1055,14 +1044,14 @@ public class TaskForm extends Activity implements Serializable {
                                                 t.solutions = true;
 //                                                Toast.makeText(context, "checked",
 //                                                        Toast.LENGTH_SHORT).show();
-                                                
+
                                             } else if (isChecked
                                                     && (checkedId == R.id.solutionno)) {
                                                 t.solutions = false;
 //                                                Toast.makeText(context, "UN Checked",
 //                                                        Toast.LENGTH_SHORT).show();
                                             }
-                                            
+
                                         }
                                     });
                         }
@@ -1071,21 +1060,20 @@ public class TaskForm extends Activity implements Serializable {
                     taskLinear.addView(star);
                     v.addView(taskLinear);
                 }
-                
-            }
-            else{
+
+            } else {
                 LinearLayout taskLinear = new LinearLayout(this);
                 taskLinear.setLayoutParams(lp);
                 taskLinear.setOrientation(LinearLayout.HORIZONTAL);
                 taskLinear.setGravity(Gravity.CENTER);
                 taskLinear.setBackgroundColor(getResources().getColor(R.color.star_bg));
-                
+
                 //star icon
                 final ImageView star = new ImageView(context);
                 star.setLayoutParams(imglp);
                 star.setImageResource(R.drawable.star);
                 star.setVisibility(View.INVISIBLE);
-                star.setPadding(4,4,4,4);
+                star.setPadding(4, 4, 4, 4);
                 //task name
                 TextView task = new TextView(context);
                 task.setLayoutParams(tvlp);
@@ -1136,10 +1124,10 @@ public class TaskForm extends Activity implements Serializable {
                             // of them
                             strategyLayout.removeAllViews(); // instead of finding
                             // and removing text
-                
+
                             // change listeners, just start over for every click
                             // improved efficiency O(n)
-                
+
                             int i = -1;
                             // for each of the strategy in the task object
                             for (final String key : t.strategies.keySet()) {
@@ -1167,12 +1155,12 @@ public class TaskForm extends Activity implements Serializable {
                                     public void onTextChanged(CharSequence s,
                                                               int start, int before, int count) {
                                     }
-                        
+
                                     @Override
                                     public void beforeTextChanged(CharSequence s,
                                                                   int start, int count, int after) {
                                     }
-                        
+
                                     @Override
                                     public void afterTextChanged(Editable s) {
                                         View v1 = (View) findViewById(clickedId);
@@ -1185,10 +1173,9 @@ public class TaskForm extends Activity implements Serializable {
                                         t.strategies.remove(id + "");
                                         t.strategies.put(id + "",
                                                 new String(s.toString()));
-                                        if(!TextUtils.isEmpty(s.toString()) && checkStar(t)){
+                                        if (!TextUtils.isEmpty(s.toString()) && checkStar(t)) {
                                             star.setVisibility(View.VISIBLE);
-                                        }
-                                        else {
+                                        } else {
                                             star.setVisibility(View.INVISIBLE);
                                         }
                                     }
@@ -1225,37 +1212,35 @@ public class TaskForm extends Activity implements Serializable {
                                                 Toast.makeText(context,
                                                         "Strategy deleted",
                                                         Toast.LENGTH_SHORT).show();
-        
+
                                             } else
                                                 Toast.makeText(
                                                         context,
                                                         "At least one strategy is required",
                                                         Toast.LENGTH_SHORT).show();
-                                        }
-                                        else {
+                                        } else {
                                             Toast.makeText(
                                                     context,
                                                     "Sample cannot be modified.",
                                                     Toast.LENGTH_SHORT).show();
                                         }
-                                        
+
                                     }
                                 });
                                 // add accordingly
                             }
-                        }
-                        else {
+                        } else {
                             watcher[0] = new TextWatcher() {
                                 @Override
                                 public void onTextChanged(CharSequence s, int start,
                                                           int before, int count) {
                                 }
-    
+
                                 @Override
                                 public void beforeTextChanged(CharSequence s,
                                                               int start, int count, int after) {
                                 }
-    
+
                                 @Override
                                 public void afterTextChanged(Editable s) {
                                     View v1 = (View) findViewById(clickedId);
@@ -1274,39 +1259,38 @@ public class TaskForm extends Activity implements Serializable {
                             };
                             strategy.addTextChangedListener(watcher[0]);
                         }
-                        
+
                         ((TextView) findViewById(R.id.tasktitle)).setText(areaText);
                         final EditText taskname = (EditText) findViewById(R.id.taskname);
                         taskname.setText(taskviewText);
                         taskname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                             @Override
                             public void onFocusChange(View view, boolean b) {
-                                if (b){
+                                if (b) {
                                     String hint = taskname.getHint().toString();
                                     taskname.setTag(hint);
                                     taskname.setHint("");
-                                }
-                                else {
+                                } else {
                                     String hint = taskname.getTag().toString();
                                     taskname.setHint(hint);
                                 }
                             }
                         });
                         taskname.requestFocus();
-                        imm.showSoftInput(taskname,InputMethodManager.SHOW_FORCED);
+                        imm.showSoftInput(taskname, InputMethodManager.SHOW_FORCED);
                         taskname.removeTextChangedListener(taskWatcher);
                         taskWatcher = new TextWatcher() {
                             @Override
                             public void onTextChanged(CharSequence s, int start,
                                                       int before, int count) {
                             }
-                
+
                             @Override
                             public void beforeTextChanged(CharSequence s,
                                                           int start, int count, int after) {
                                 // TODO Auto-generated method stub
                             }
-                
+
                             @Override
                             public void afterTextChanged(Editable s) {
                                 // TODO Auto-generated method stub
@@ -1322,11 +1306,10 @@ public class TaskForm extends Activity implements Serializable {
                                     Area areaobj = getAreaById(area.getId());
                                     Task t = areaobj.getTaskById(clickedId);
                                     t.setTaskname(s.toString());
-                                    if(!TextUtils.isEmpty(s.toString()) && checkStar(t)){
+                                    if (!TextUtils.isEmpty(s.toString()) && checkStar(t)) {
                                         ((LinearLayout) v1
                                                 .getParent()).getChildAt(1).setVisibility(View.VISIBLE);
-                                    }
-                                    else {
+                                    } else {
                                         ((LinearLayout) v1
                                                 .getParent()).getChildAt(1).setVisibility(View.INVISIBLE);
                                     }
@@ -1345,7 +1328,7 @@ public class TaskForm extends Activity implements Serializable {
                         } else {
                             ((RadioButton) solutions.findViewById(R.id.solutionno))
                                     .setChecked(true);
-                
+
                         }
                         solutions
                                 .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -1368,14 +1351,14 @@ public class TaskForm extends Activity implements Serializable {
                                             t.solutions = true;
                                         /*Toast.makeText(context, "checked",
                                                 Toast.LENGTH_SHORT).show();*/
-                                
+
                                         } else if (isChecked
                                                 && (checkedId == R.id.solutionno)) {
                                             t.solutions = false;
                                         /*Toast.makeText(context, "UN Checked",
                                                 Toast.LENGTH_SHORT).show();*/
                                         }
-                            
+
                                     }
                                 });
                     }
@@ -1386,7 +1369,7 @@ public class TaskForm extends Activity implements Serializable {
             }
             // TODO: Enter task name is in intent
             area.setOnClickListener(new OnClickListener() {
-                
+
                 @Override
                 public void onClick(View v) {
                     try {
@@ -1398,7 +1381,7 @@ public class TaskForm extends Activity implements Serializable {
                         // set on edit listener
                         LinearLayout area = (LinearLayout) v.getParent();
                         // final int parentid = area.getId();
-                        ((LinearLayout)(area.getChildAt(1))).getChildAt(0).callOnClick();
+                        ((LinearLayout) (area.getChildAt(1))).getChildAt(0).callOnClick();
                         Button addTask = (Button) findViewById(R.id.addnewtask);
                         addTask.setOnClickListener(new OnClickListener() {
                             @Override
@@ -1413,14 +1396,13 @@ public class TaskForm extends Activity implements Serializable {
                                 View currentClicked = (View) findViewById(clickedId);
                                 // FIND PARENT
                                 LinearLayout parent;
-                                if (currentClicked instanceof LinearLayout){
+                                if (currentClicked instanceof LinearLayout) {
                                     parent = (LinearLayout) currentClicked;
-                                }
-                                else {
+                                } else {
                                     parent = (LinearLayout) currentClicked.getParent().getParent();
                                 }
-                                
-    
+
+
                                 // get area id
                                 // get area object
                                 // Create empty View
@@ -1428,23 +1410,22 @@ public class TaskForm extends Activity implements Serializable {
                                 TextView areaT = (TextView) parent.getChildAt(0);
                                 CharSequence areaText = areaT.getText();
                                 Area area1 = getAreaByName(areaText);
-                                for (Task task: area1.getTasks()){
-                                    if (TextUtils.isEmpty(task.getTaskname())||isStrategyEmpty(v)){
+                                for (Task task : area1.getTasks()) {
+                                    if (TextUtils.isEmpty(task.getTaskname()) || isStrategyEmpty(v)) {
                                         infoCheck = false;
                                         break;
                                     }
                                 }
-    
-                                if(infoCheck) {
+
+                                if (infoCheck) {
                                     if (!isSample) {
                                         onAddNewTask(parent, areaText);
-                                    }else {
+                                    } else {
                                         Toast.makeText(context,
                                                 "Sample cannot be modified.",
                                                 Toast.LENGTH_SHORT).show();
                                     }
-                                }
-                                else {
+                                } else {
                                     Toast.makeText(TaskForm.this, getResources().getString(R.string.field_uncomplete), Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -1458,18 +1439,17 @@ public class TaskForm extends Activity implements Serializable {
             merge.setActive(v, true);
         }
         instructional.setAdapter(merge);
-        
+
     }
-    
+
     //check whether current task has been filled out
-    private boolean checkStar(Task t){
-        if(!TextUtils.isEmpty(t.getTaskname())){
+    private boolean checkStar(Task t) {
+        if (!TextUtils.isEmpty(t.getTaskname())) {
             int i = 0;
-            for(String key : t.strategies.keySet()){
-                if (t.strategies.get(key) != null && t.strategies.get(key).trim() != ""){
+            for (String key : t.strategies.keySet()) {
+                if (t.strategies.get(key) != null && t.strategies.get(key).trim() != "") {
                     return true;
-                }
-                else if (i == t.strategies.keySet().size()-1){
+                } else if (i == t.strategies.keySet().size() - 1) {
                     return false;
                 }
                 i++;
@@ -1477,20 +1457,20 @@ public class TaskForm extends Activity implements Serializable {
         }
         return false;
     }
-    
+
     //highlight the current task item
-    private void highLightLayout(View v){
+    private void highLightLayout(View v) {
         //eliminate other items bg color
         ListView lv = (ListView) findViewById(R.id.instructionalAreasList);
         MergeAdapter m = (MergeAdapter) lv.getAdapter();
         int childrenNum = m.getCount();
-        for (int i=0; i<childrenNum; i++){
-            View areaView = (View)m.getItem(i);
-            if (areaView!=null && areaView instanceof LinearLayout){
-                LinearLayout areaLayout = (LinearLayout)areaView;
+        for (int i = 0; i < childrenNum; i++) {
+            View areaView = (View) m.getItem(i);
+            if (areaView != null && areaView instanceof LinearLayout) {
+                LinearLayout areaLayout = (LinearLayout) areaView;
                 //area name
                 areaLayout.getChildAt(0).setBackgroundResource(0);
-                for (int j=1; j<areaLayout.getChildCount(); j++){
+                for (int j = 1; j < areaLayout.getChildCount(); j++) {
                     //task name +star layout
                     LinearLayout taskLayout = (LinearLayout) areaLayout.getChildAt(j);
                     taskLayout.setBackgroundResource(0);
@@ -1498,17 +1478,15 @@ public class TaskForm extends Activity implements Serializable {
             }
         }
         //taskLinear: taskName + start
-        LinearLayout taskLinear = (LinearLayout)v.getParent();
+        LinearLayout taskLinear = (LinearLayout) v.getParent();
         taskLinear.setBackgroundColor(getResources().getColor(R.color.highlight_blue));
         //areaName
-        ((LinearLayout)taskLinear.getParent()).getChildAt(0).setBackgroundColor(getResources().getColor(R.color.highlight_blue));
+        ((LinearLayout) taskLinear.getParent()).getChildAt(0).setBackgroundColor(getResources().getColor(R.color.highlight_blue));
     }
-    
+
     /**
      * highlight this text view
      * highlight the clicked task area
-     *
-     *
      */
     /*public void highlightThis(View tv) {
         ListView lv = (ListView) findViewById(R.id.instructionalAreasList);
@@ -1532,14 +1510,13 @@ public class TaskForm extends Activity implements Serializable {
             ((LinearLayout) tv.getParent().getParent()).getChildAt(0).setBackgroundColor(
                     Color.CYAN);
     }*/
-    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.task_form, menu);
         return true;
     }
-    
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -1551,68 +1528,67 @@ public class TaskForm extends Activity implements Serializable {
         }
         return super.onOptionsItemSelected(item);
     }
-    
+
     public void onAddNewTask(LinearLayout parent, CharSequence areaText) {
 //        Toast.makeText(activity, "new task", Toast.LENGTH_SHORT).show();
         ((TextView) findViewById(R.id.tasktitle)).setText(areaText);
-        
+
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        lp.setMargins(0,5,0,0);
+        lp.setMargins(0, 5, 0, 0);
         LinearLayout taskLinear = new LinearLayout(this);
         taskLinear.setLayoutParams(lp);
         taskLinear.setOrientation(LinearLayout.HORIZONTAL);
         taskLinear.setGravity(Gravity.CENTER);
         taskLinear.setBackgroundColor(getResources().getColor(R.color.star_bg));
-    
+
         LinearLayout.LayoutParams tvlp = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f);
         LinearLayout.LayoutParams imglp = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-        
+
         TextView tv = new TextView(context);
         tv.setLayoutParams(tvlp);
         tv.setId(id++);
         tv.setTextColor(Color.BLACK);
         tv.setPadding(30, 0, 0, 0);
-        
+
         final ImageView imageView = new ImageView(this);
         imageView.setLayoutParams(imglp);
         imageView.setImageResource(R.drawable.star);
         imageView.setVisibility(View.INVISIBLE);
-        imageView.setPadding(4,4,4,4);
-        
+        imageView.setPadding(4, 4, 4, 4);
+
         Area areaObject = getAreaByName(areaText);
         final Task t = new Task();
         t.setTaskname(tv.getText().toString());
         t.taskid = tv.getId();
         RadioGroup solutions = (RadioGroup) findViewById(R.id.solutionradiogroup);
-        
+
         //solutions default on solution-no
         /*t.solutions = false;
         ((RadioButton) solutions.findViewById(R.id.solutionno))
                 .setChecked(true);*/
         solutions.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup group, int checkedId) {
-                        RadioButton checkedSolution = (RadioButton) group
-                                .findViewById(checkedId);
-                        boolean isChecked = checkedSolution.isChecked();
-                        if (isChecked && (checkedId == R.id.solutionyes)) {
-                            t.solutions = true;
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton checkedSolution = (RadioButton) group
+                        .findViewById(checkedId);
+                boolean isChecked = checkedSolution.isChecked();
+                if (isChecked && (checkedId == R.id.solutionyes)) {
+                    t.solutions = true;
 //                            Toast.makeText(context, "checked",
 //                                    Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                            t.solutions = false;
+                } else {
+                    t.solutions = false;
 //                            Toast.makeText(context, "UN checked",
 //                                    Toast.LENGTH_SHORT).show();
-                        }
-                        
-                    }
-                });
+                }
+
+            }
+        });
         areaObject.addTask(t);
         // On click listener of the task
         tv.setOnClickListener(new OnClickListener() {
@@ -1646,11 +1622,11 @@ public class TaskForm extends Activity implements Serializable {
                 strategyLayout.addView(row0);
                 EditText strategy = (EditText) row0
                         .findViewById(R.id.strategyedittext);
-                
+
                 if (strategy == null)
                     Toast.makeText(context, "Strategy is null",
                             Toast.LENGTH_SHORT).show();
-                
+
                 // Insert strategies
                 if (t.strategies.keySet() != null
                         && t.strategies.get("0") != null
@@ -1691,12 +1667,12 @@ public class TaskForm extends Activity implements Serializable {
                             public void onTextChanged(CharSequence s,
                                                       int start, int before, int count) {
                             }
-                            
+
                             @Override
                             public void beforeTextChanged(CharSequence s,
                                                           int start, int count, int after) {
                             }
-                            
+
                             @Override
                             public void afterTextChanged(Editable s) {
                                 View v = (View) findViewById(clickedId);
@@ -1705,14 +1681,13 @@ public class TaskForm extends Activity implements Serializable {
                                 TextView area = (TextView) parent.getChildAt(0);
                                 Area areaObj = getAreaById(area.getId());
                                 Task t = areaObj.getTaskById(clickedId);
-                                
+
                                 t.strategies.remove(id + "");
                                 t.strategies.put(id + "",
                                         new String(s.toString()));
-                                if (!TextUtils.isEmpty(s.toString()) && checkStar(t)){
+                                if (!TextUtils.isEmpty(s.toString()) && checkStar(t)) {
                                     imageView.setVisibility(View.VISIBLE);
-                                }
-                                else{
+                                } else {
                                     imageView.setVisibility(View.INVISIBLE);
                                 }
                             }
@@ -1740,7 +1715,7 @@ public class TaskForm extends Activity implements Serializable {
                                                 .getChildAt(0);
                                         Area areaObj = getAreaById(area.getId());
                                         Task t = areaObj.getTaskById(clickedId);
-        
+
                                         t.strategies.remove(id + "");
                                         if (checkStar(t)) {
                                             imageView.setVisibility(View.VISIBLE);
@@ -1754,8 +1729,7 @@ public class TaskForm extends Activity implements Serializable {
                                                 context,
                                                 "At least one strategy is required",
                                                 Toast.LENGTH_SHORT).show();
-                                }
-                                else {
+                                } else {
                                     Toast.makeText(
                                             context,
                                             "Sample cannot be modified.",
@@ -1765,20 +1739,19 @@ public class TaskForm extends Activity implements Serializable {
                         });
                         // add accordingly
                     }
-                }
-                else{
+                } else {
                     // First strategy
                     watcher[0] = new TextWatcher() {
                         @Override
                         public void onTextChanged(CharSequence s, int start,
                                                   int before, int count) {
                         }
-        
+
                         @Override
                         public void beforeTextChanged(CharSequence s, int start,
                                                       int count, int after) {
                         }
-        
+
                         @Override
                         public void afterTextChanged(Editable s) {
                             View v1 = (View) findViewById(clickedId);
@@ -1788,10 +1761,9 @@ public class TaskForm extends Activity implements Serializable {
                             Task t = areaObj.getTaskById(clickedId);
                             t.strategies.remove("0");
                             t.strategies.put("0", new String(s.toString()));
-                            if (!TextUtils.isEmpty(s.toString()) && checkStar(t)){
+                            if (!TextUtils.isEmpty(s.toString()) && checkStar(t)) {
                                 imageView.setVisibility(View.VISIBLE);
-                            }
-                            else{
+                            } else {
                                 imageView.setVisibility(View.INVISIBLE);
                             }
                         }
@@ -1805,31 +1777,30 @@ public class TaskForm extends Activity implements Serializable {
                 taskname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
                     public void onFocusChange(View view, boolean b) {
-                        if (b){
+                        if (b) {
                             String hint = taskname.getHint().toString();
                             taskname.setTag(hint);
                             taskname.setHint("");
-                        }
-                        else {
+                        } else {
                             String hint = taskname.getTag().toString();
                             taskname.setHint(hint);
                         }
                     }
                 });
                 taskname.requestFocus();
-                imm.showSoftInput(taskname,InputMethodManager.SHOW_FORCED);
+                imm.showSoftInput(taskname, InputMethodManager.SHOW_FORCED);
                 taskname.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void onTextChanged(CharSequence s, int start,
                                               int before, int count) {
                     }
-                    
+
                     @Override
                     public void beforeTextChanged(CharSequence s, int start,
                                                   int count, int after) {
                         // TODO Auto-generated method stub
                     }
-                    
+
                     @Override
                     public void afterTextChanged(Editable s) {
                         // TODO Auto-generated method stub
@@ -1844,10 +1815,9 @@ public class TaskForm extends Activity implements Serializable {
                             Area areaObj = getAreaById(area.getId());
                             Task t = areaObj.getTaskById(clickedId);
                             t.setTaskname(task.getText().toString());
-                            if (!TextUtils.isEmpty(s.toString()) && checkStar(t)){
+                            if (!TextUtils.isEmpty(s.toString()) && checkStar(t)) {
                                 ((LinearLayout) v1.getParent()).getChildAt(1).setVisibility(View.VISIBLE);
-                            }
-                            else{
+                            } else {
                                 ((LinearLayout) v1.getParent()).getChildAt(1).setVisibility(View.INVISIBLE);
                             }
                             // Toast.makeText(context, "Editable text:"+s,
@@ -1857,16 +1827,16 @@ public class TaskForm extends Activity implements Serializable {
                         }
                     }
                 });
-                
+
             }
-            
+
         });
-        
+
         taskLinear.addView(tv);
         taskLinear.addView(imageView);
         // ADD EMPTY VIEW TO THIS
         parent.addView(taskLinear);
         tv.callOnClick();
     }
-    
+
 }

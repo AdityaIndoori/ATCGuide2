@@ -2745,6 +2745,7 @@ id cancel_action
 id checkbox
 id chronometer
 id collapseActionView
+id complete_txt
 id consider_complete
 id container
 id contentPanel

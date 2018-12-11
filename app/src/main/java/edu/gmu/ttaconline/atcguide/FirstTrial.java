@@ -66,6 +66,7 @@ public class FirstTrial extends FragmentActivity {
      * trials
      */
     /* Instance variables */
+    TextView complete_txt;
     ArrayList<Area> areaList;// Store the lists of all areas
     ArrayList<String> trial1Texts = new ArrayList<String>();// store text only
     Calendar myCalendar = Calendar.getInstance();
@@ -106,6 +107,7 @@ public class FirstTrial extends FragmentActivity {
         setCustomActionBar();
         context = getApplicationContext();
 
+        complete_txt = (TextView) findViewById(R.id.complete_txt);
         areaList = PersistenceBean.getPersistedAreaObjects("trial1" + PersistenceBean.getCurrentId(context), context);
 //        areaList = PersistenceBean.getPersistedAreaObjects(PersistenceBean.getCurrentId(context), context);
         inflater = getLayoutInflater();
@@ -326,6 +328,7 @@ public class FirstTrial extends FragmentActivity {
      * Click the first item in the Adapter
      */
     private void clickFirstItem() {
+        complete_txt.requestFocus();
         ListView lv = (ListView) findViewById(R.id.instructionalAreasList);
         if (null == lv) {
             toast("ListView is null");
@@ -382,6 +385,7 @@ public class FirstTrial extends FragmentActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                complete_txt.requestFocus();
                 AT_List atlist = new AT_List();
                 atlist.setFirstTrail(activity);
                 atlist.show(fragmentManager, "AT List");
@@ -733,6 +737,7 @@ public class FirstTrial extends FragmentActivity {
                         tasktextView.setTypeface(null, Typeface.BOLD);
                         tasktextView.setPadding(30, 0, 0, 0);
                         taskLayout.addView(tasktextView);
+                        tasktextView.requestFocus();
 
                         if (task.ats.size() > 0) {
                             for (AT at : task.ats) {
@@ -796,6 +801,7 @@ public class FirstTrial extends FragmentActivity {
                             atLinear.addView(assistiveTech);
                             atLinear.addView(star);
                             taskLayout.addView(atLinear);
+                            taskLayout.requestFocus();
                         }
                         areaRow.addView(taskLayout);
                     }
@@ -922,6 +928,7 @@ public class FirstTrial extends FragmentActivity {
                 highLightLayout(v);
                 // Remove Previous Listeners if set
                 EditText atname = (EditText) findViewById(R.id.at);
+                atname.requestFocus();
                 atname.removeTextChangedListener(_ATNameWatcher);
                 atname.setHint("Enter service here or click “AIM” button to choose service from AEM Navigator");
 //				atname.setText("AEM Navigator");// Default
@@ -974,6 +981,7 @@ public class FirstTrial extends FragmentActivity {
                 highLightLayout(v);
                 // Remove Previous Listeners if set
                 EditText atname = (EditText) findViewById(R.id.at);
+                atname.requestFocus();
                 atname.removeTextChangedListener(_ATNameWatcher);
                 // atname.setText("Choose AT");//Default
                 EditText participantView = (EditText) findViewById(R.id.participants);
@@ -1025,6 +1033,8 @@ public class FirstTrial extends FragmentActivity {
          * the view.
          */
         TextView instructionalTitle = ((TextView) findViewById(R.id.areatitle));
+        instructionalTitle.requestFocus();
+        instructionalTitle.requestFocusFromTouch();
         instructionalTitle.setText(at.getInstructionalArea());
         instructionalTitle.setTextColor(Color.BLACK);
         instructionalTitle.setTypeface(null, Typeface.BOLD);
@@ -1227,6 +1237,7 @@ public class FirstTrial extends FragmentActivity {
                             EditText atname = (EditText) findViewById(R.id.at);
                             atname.removeTextChangedListener(_ATNameWatcher);
                             atname.setText("");
+                            atname.requestFocus();
                             EditText participantView = (EditText) findViewById(R.id.participants);
                             participantView.removeTextChangedListener(participantsWatcher);
                             participantView.setText("");
@@ -1273,7 +1284,7 @@ public class FirstTrial extends FragmentActivity {
                                     .getId());
                             AT at = new AT();
                             at.task = t.taskname;
-//					at.ATName = "Choose AT";
+//					        at.ATName = "Choose AT";
                             int ntasks = t.ats.size();
                             int lstId = t.ats.get(ntasks - 1).id;
 
@@ -1325,6 +1336,7 @@ public class FirstTrial extends FragmentActivity {
                 public void onClick(View v) {
                     // Remove All listeners
                     EditText atname = (EditText) findViewById(R.id.at);
+                    atname.requestFocus();
                     atname.removeTextChangedListener(_ATNameWatcher);
                     EditText participantView = (EditText) findViewById(R.id.participants);
                     participantView

@@ -511,6 +511,7 @@ public class RevisitFirstTrial extends FragmentActivity {
 		// super.onNewIntent(intent);
 		Toast.makeText(context, "New Intent Called", Toast.LENGTH_SHORT).show();
 		EditText ATname = (EditText) findViewById(R.id.at);
+		ATname.requestFocus();
 		Uri uri = intent.getData();
 		if (uri != null) {
 			try {
@@ -845,6 +846,7 @@ public class RevisitFirstTrial extends FragmentActivity {
 				// Remove Previous Listeners if set
 
 				EditText atname = (EditText) findViewById(R.id.atTriedEdit);
+				atname.requestFocus();
 				atname.removeTextChangedListener(_ATNameWatcher);
 
 				EditText ataction = (EditText) findViewById(R.id.at);
@@ -1054,6 +1056,7 @@ public class RevisitFirstTrial extends FragmentActivity {
 	 */
 	public void setATNameListener(final AT at, final View currentClicked) {
 		EditText atname = (EditText) findViewById(R.id.atTriedEdit);
+		atname.requestFocus();
 		atname.removeTextChangedListener(_ATNameWatcher);
 
 		_ATNameWatcher = new TextWatcher() {
@@ -1092,6 +1095,7 @@ public class RevisitFirstTrial extends FragmentActivity {
 	 */
 	public void setATActionListener(final AT at, final View currentClicked) {
 		EditText atname = (EditText) findViewById(R.id.at);
+		atname.requestFocus();
 		atname.removeTextChangedListener(_ActionToWatcher);
 		// atname.setEnabled(false);
 		// atname.setFocusable(false);
