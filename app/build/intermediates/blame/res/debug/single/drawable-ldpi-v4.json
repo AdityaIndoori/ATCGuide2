@@ -1,26 +1,26 @@
 [
     {
-        "merged": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\sample2.png",
-        "source": "C:\\Users\\aindoori\\ATCGuide2\\app\\src\\main\\res\\drawable-ldpi\\sample2.png"
+        "merged": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\sample3.png",
+        "source": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\src\\main\\res\\drawable-ldpi\\sample3.png"
     },
     {
-        "merged": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_action_delete.png",
-        "source": "C:\\Users\\aindoori\\ATCGuide2\\app\\src\\main\\res\\drawable-ldpi\\ic_action_delete.png"
+        "merged": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\atgback1.png",
+        "source": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\src\\main\\res\\drawable-ldpi\\atgback1.png"
     },
     {
-        "merged": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\atgback1.png",
-        "source": "C:\\Users\\aindoori\\ATCGuide2\\app\\src\\main\\res\\drawable-ldpi\\atgback1.png"
+        "merged": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_delete_forever.png",
+        "source": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\src\\main\\res\\drawable-ldpi\\ic_delete_forever.png"
     },
     {
-        "merged": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_delete_forever.png",
-        "source": "C:\\Users\\aindoori\\ATCGuide2\\app\\src\\main\\res\\drawable-ldpi\\ic_delete_forever.png"
+        "merged": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_action_plusbutton.png",
+        "source": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\src\\main\\res\\drawable-ldpi\\ic_action_plusbutton.png"
     },
     {
-        "merged": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\sample3.png",
-        "source": "C:\\Users\\aindoori\\ATCGuide2\\app\\src\\main\\res\\drawable-ldpi\\sample3.png"
+        "merged": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_action_delete.png",
+        "source": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\src\\main\\res\\drawable-ldpi\\ic_action_delete.png"
     },
     {
-        "merged": "C:\\Users\\aindoori\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_action_plusbutton.png",
-        "source": "C:\\Users\\aindoori\\ATCGuide2\\app\\src\\main\\res\\drawable-ldpi\\ic_action_plusbutton.png"
+        "merged": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\sample2.png",
+        "source": "C:\\Users\\indoo\\StudioProjects\\ATCGuide2\\app\\src\\main\\res\\drawable-ldpi\\sample2.png"
     }
 ]

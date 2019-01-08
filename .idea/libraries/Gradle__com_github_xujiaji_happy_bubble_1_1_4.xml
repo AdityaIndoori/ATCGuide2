@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.xujiaji:happy-bubble-1.1.4">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/happy-bubble-1.1.4.aar/340ae16e248ab2fea33828b74a0773d7/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/happy-bubble-1.1.4.aar/340ae16e248ab2fea33828b74a0773d7/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/happy-bubble-1.1.4.aar/41ddaa03215d9c21f98993b09e9c860b/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/happy-bubble-1.1.4.aar/41ddaa03215d9c21f98993b09e9c860b/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
